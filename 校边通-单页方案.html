@@ -3,806 +3,481 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>校边通 · 单页方案</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>校边通 · 单页完整方案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
-  background: #C8C8C8;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 24px;
+  background: #B0B0B0;
+  display: flex; justify-content: center; align-items: flex-start;
+  min-height: 100vh; padding: 20px;
   font-family: 'Noto Sans SC', sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
-
-/* ── 精确A4尺寸 ── */
 .a4 {
-  width: 794px;
-  height: 1123px;
-  background: #FAFAF8;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  width: 794px; height: 1123px;
+  background: #FAFAF7;
+  position: relative; overflow: hidden;
+  box-shadow: 0 6px 40px rgba(0,0,0,0.22);
 }
-
-/* ── 顶部色条 ── */
 .a4::before {
   content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, #0F1F5C 0%, #1E3FBF 40%, #E8420A 70%, #F59E0B 100%);
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg,#0A1640 0%,#1A3FBF 35%,#D63E09 65%,#F59E0B 100%);
 }
-
-/* ── 左侧装饰竖线 ── */
-.a4::after {
-  content: '';
-  position: absolute;
-  top: 40px; left: 28px;
-  width: 2px;
-  height: 960px;
-  background: linear-gradient(to bottom, #0F1F5C, rgba(15,31,92,0.05));
-}
-
-.inner {
-  padding: 36px 44px 32px 50px;
+.page {
+  padding: 24px 32px 18px 32px;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: flex; flex-direction: column; gap: 8px;
 }
 
-/* ── 头部 ── */
+/* HEAD */
 .head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #E2E2DC;
-  margin-bottom: 18px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #D8D8D2;
 }
-.brand {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
+.brand-row { display: flex; align-items: baseline; gap: 8px; }
+.bn { font-family:'Noto Serif SC',serif; font-size:22px; font-weight:900; color:#0A1640; letter-spacing:2px; }
+.bd { width:6px; height:6px; border-radius:50%; background:#D63E09; margin-bottom:4px; }
+.bs { font-size:10px; color:#AAA; font-weight:300; letter-spacing:1.5px; }
+.head-right { display:flex; gap:6px; align-items:center; }
+.htag { background:#0A1640; color:white; font-size:8.5px; font-weight:700; padding:3px 9px; border-radius:2px; letter-spacing:1px; }
+
+/* CORE STMT */
+.core {
+  background:#0A1640; color:white;
+  padding:9px 14px; border-radius:3px;
+  display:flex; align-items:center; gap:12px;
 }
-.brand-name {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 28px;
-  font-weight: 900;
-  color: #0F1F5C;
-  letter-spacing: 2px;
+.core-lbl { font-size:8px; font-weight:700; letter-spacing:2px; color:rgba(255,255,255,.4); white-space:nowrap; flex-shrink:0; }
+.core-txt { font-size:12.5px; font-weight:500; line-height:1.45; }
+.core-txt em { font-style:normal; color:#FBB040; font-weight:700; }
+
+/* SECTION LABEL */
+.slabel {
+  font-size:8px; font-weight:700; letter-spacing:2px; color:#0A1640;
+  text-transform:uppercase; border-bottom:1.5px solid #0A1640;
+  padding-bottom:4px; margin-bottom:6px;
+  display:flex; align-items:center; gap:5px;
 }
-.brand-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: #E8420A;
-  margin-bottom: 5px;
-}
-.brand-sub {
-  font-size: 11.5px;
-  color: #888;
-  font-weight: 300;
-  letter-spacing: 1.5px;
-}
-.head-meta {
-  text-align: right;
-}
-.head-meta .tag {
-  display: inline-block;
-  background: #0F1F5C;
-  color: white;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 3px 10px;
-  border-radius: 2px;
-  margin-bottom: 5px;
-}
-.head-meta .date {
-  font-size: 10px;
-  color: #AAA;
-  display: block;
+.slabel .sn {
+  background:#0A1640; color:white;
+  width:14px; height:14px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:8px; flex-shrink:0;
 }
 
-/* ── 核心定义行 ── */
-.core-stmt {
-  background: #0F1F5C;
-  color: white;
-  padding: 13px 18px;
-  border-radius: 4px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.core-stmt .label {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: rgba(255,255,255,0.45);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.core-stmt .stmt {
-  font-size: 13.5px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: white;
-}
-.core-stmt .stmt em {
-  font-style: normal;
-  color: #FBB040;
-  font-weight: 700;
+/* MAIN GRID: 3 rows of panels */
+.row1 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:9px; }
+.row2 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:9px; }
+.row3 { display:grid; grid-template-columns:repeat(8,1fr); gap:6px; }
+
+.panel {
+  background:white; border:1px solid #E4E4DE;
+  border-radius:4px; padding:8px 10px;
 }
 
-/* ── 主体三栏布局 ── */
-.body-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 14px;
+/* PAIN ITEMS */
+.p-item {
+  display:flex; gap:6px; align-items:flex-start;
+  padding:4px 6px; border-left:2.5px solid; border-radius:0 3px 3px 0;
+  background:#FAFAF7; margin-bottom:4px;
 }
+.p-ico { font-size:12px; flex-shrink:0; line-height:1.2; }
+.p-t { font-size:10px; font-weight:700; color:#1a1a1a; line-height:1.3; }
+.p-d { font-size:8.5px; color:#888; line-height:1.3; margin-top:1px; }
 
-.col-title {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #0F1F5C;
-  text-transform: uppercase;
-  border-bottom: 1.5px solid #0F1F5C;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.col-title .num {
-  background: #0F1F5C;
-  color: white;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9px;
-  flex-shrink: 0;
-}
+/* 4P */
+.p4grid { display:grid; grid-template-columns:1fr 1fr; gap:4px; }
+.p4c { border-radius:3px; padding:6px 8px; border:1px solid #E8E8E2; }
+.p4h { font-size:9px; font-weight:700; margin-bottom:3px; display:flex; align-items:center; gap:4px; }
+.p4body { font-size:9px; color:#444; line-height:1.6; }
 
-/* ── 痛点卡片 ── */
-.pain-item {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-  padding: 7px 9px;
-  background: white;
-  border-radius: 4px;
-  margin-bottom: 6px;
-  border-left: 2.5px solid;
+/* KPI ROW */
+.kpi-card {
+  background:white; border:1px solid #E4E4DE;
+  border-radius:4px; padding:7px 8px; text-align:center;
 }
-.pain-item .pi {
-  font-size: 14px;
-  flex-shrink: 0;
-  line-height: 1;
-}
-.pain-item .pt {
-  font-size: 11px;
-  font-weight: 600;
-  color: #1a1a1a;
-  line-height: 1.3;
-}
-.pain-item .pd {
-  font-size: 9.5px;
-  color: #888;
-  margin-top: 1px;
-  line-height: 1.4;
-}
+.kpi-n { font-family:'Noto Serif SC',serif; font-size:16px; font-weight:900; color:#0A1640; line-height:1; }
+.kpi-l { font-size:8px; color:#AAA; margin-top:2px; line-height:1.3; }
+.kpi-t { font-size:8.5px; font-weight:700; margin-top:2px; }
 
-/* ── 功能列表 ── */
-.feat-item {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-  padding: 7px 0;
-  border-bottom: 1px solid #EFEFEB;
-}
-.feat-item:last-child { border-bottom: none; }
-.feat-icon {
-  width: 26px; height: 26px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-.feat-name {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.3;
-}
-.feat-desc {
-  font-size: 9.5px;
-  color: #888;
-  margin-top: 1px;
-  line-height: 1.4;
-}
-.feat-badge {
-  display: inline-block;
-  font-size: 8.5px;
-  font-weight: 700;
-  padding: 1px 6px;
-  border-radius: 2px;
-  margin-left: 5px;
-  vertical-align: middle;
-}
+/* TIMELINE */
+.tl { position:relative; padding-left:20px; }
+.tl::before { content:''; position:absolute; left:6px; top:4px; bottom:4px; width:1.5px; background:linear-gradient(to bottom,#0A1640,rgba(10,22,64,.1)); }
+.tli { position:relative; margin-bottom:6px; }
+.tli:last-child { margin-bottom:0; }
+.tl-dot { position:absolute; left:-17px; top:3px; width:13px; height:13px; border-radius:50%; background:#0A1640; display:flex; align-items:center; justify-content:center; font-size:7.5px; font-weight:700; color:white; }
+.tl-day { font-size:8.5px; font-weight:700; color:#0A1640; }
+.tl-title { font-size:10px; font-weight:600; color:#1a1a1a; line-height:1.3; }
+.tl-kpi { font-size:8.5px; color:#D63E09; font-weight:600; }
 
-/* ── 商业数据 ── */
-.biz-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  margin-bottom: 8px;
+/* FOOTER */
+.foot {
+  margin-top:auto;
+  padding-top:8px; border-top:1px solid #E4E4DE;
+  display:flex; justify-content:space-between; align-items:center;
 }
-.biz-card {
-  background: white;
-  border-radius: 4px;
-  padding: 9px 11px;
-  border: 1px solid #E8E8E4;
-}
-.biz-num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 20px;
-  font-weight: 900;
-  color: #0F1F5C;
-  line-height: 1;
-}
-.biz-label {
-  font-size: 9px;
-  color: #AAA;
-  margin-top: 2px;
-}
-.price-row {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-.price-card {
-  flex: 1;
-  border-radius: 4px;
-  padding: 8px 10px;
-  text-align: center;
-  border: 1px solid #E8E8E4;
-  background: white;
-}
-.price-card.highlight {
-  background: #0F1F5C;
-  border-color: #0F1F5C;
-}
-.price-tier {
-  font-size: 8.5px;
-  color: #AAA;
-  margin-bottom: 3px;
-}
-.price-card.highlight .price-tier { color: rgba(255,255,255,0.5); }
-.price-val {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 17px;
-  font-weight: 900;
-  color: #0F1F5C;
-  line-height: 1;
-}
-.price-card.highlight .price-val { color: white; }
-.price-sub {
-  font-size: 8.5px;
-  color: #888;
-  margin-top: 2px;
-}
-.price-card.highlight .price-sub { color: rgba(255,255,255,0.6); }
+.foot-kpis { display:flex; gap:12px; }
+.fk { text-align:center; }
+.fk-n { font-family:'Noto Serif SC',serif; font-size:14px; font-weight:900; color:#0A1640; line-height:1; }
+.fk-l { font-size:8px; color:#AAA; margin-top:1px; }
+.wall { background:#0A1640; border-radius:3px; padding:4px 12px; }
+.wall span { font-size:8.5px; font-weight:700; color:#FBB040; letter-spacing:.8px; }
+.foot-right { font-size:8.5px; color:#CCC; text-align:right; line-height:1.8; }
 
-/* ── 中间大功能展示 ── */
-.flow-box {
-  background: white;
-  border: 1px solid #E8E8E4;
-  border-radius: 4px;
-  padding: 10px 12px;
-  margin-bottom: 6px;
-}
-.flow-title {
-  font-size: 9px;
-  font-weight: 700;
-  color: #0F1F5C;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.flow-steps {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.flow-step {
-  flex: 1;
-  background: #F5F5F0;
-  border-radius: 3px;
-  padding: 6px 8px;
-  font-size: 10px;
-  font-weight: 600;
-  color: #1a1a1a;
-  text-align: center;
-  line-height: 1.3;
-}
-.flow-arrow {
-  color: #0F1F5C;
-  font-size: 12px;
-  flex-shrink: 0;
-  opacity: 0.4;
-}
-
-/* ── 证据条 ── */
-.evidence-strip {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-.ev-card {
-  flex: 1;
-  background: white;
-  border: 1px solid #E8E8E4;
-  border-radius: 4px;
-  padding: 8px 10px;
-  position: relative;
-  overflow: hidden;
-}
-.ev-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; bottom: 0;
-  width: 3px;
-}
-.ev-source {
-  font-size: 8.5px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 3px;
-}
-.ev-text {
-  font-size: 9.5px;
-  color: #555;
-  line-height: 1.5;
-}
-.ev-text strong { color: #E8420A; font-weight: 700; }
-
-/* ── 时间线 ── */
-.timeline {
-  display: flex;
-  gap: 0;
-  position: relative;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  height: 1.5px;
-  background: #E2E2DC;
-}
-.tl-item {
-  flex: 1;
-  position: relative;
-  padding-top: 28px;
-  padding-left: 2px;
-  padding-right: 4px;
-}
-.tl-dot {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: #0F1F5C;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 8px;
-  font-weight: 700;
-  color: white;
-  z-index: 1;
-}
-.tl-day {
-  font-size: 9px;
-  font-weight: 700;
-  color: #0F1F5C;
-  margin-bottom: 2px;
-}
-.tl-title {
-  font-size: 10px;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 2px;
-  line-height: 1.3;
-}
-.tl-kpi {
-  font-size: 9px;
-  color: #E8420A;
-  font-weight: 600;
-}
-
-/* ── 竞争差异化 ── */
-.diff-row {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-.diff-card {
-  flex: 1;
-  padding: 9px 11px;
-  border-radius: 4px;
-  border: 1px solid #E8E8E4;
-  background: white;
-}
-.diff-dim {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #888;
-  margin-bottom: 4px;
-}
-.diff-val {
-  font-size: 11px;
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.3;
-}
-.diff-card.ours {
-  background: #0F1F5C;
-  border-color: #0F1F5C;
-}
-.diff-card.ours .diff-dim { color: rgba(255,255,255,0.4); }
-.diff-card.ours .diff-val { color: white; }
-
-/* ── 底部 ── */
-.footer {
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px solid #E2E2DC;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-left {
-  display: flex;
-  gap: 16px;
-}
-.kpi-inline {
-  text-align: center;
-}
-.kpi-inline .n {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 16px;
-  font-weight: 900;
-  color: #0F1F5C;
-  line-height: 1;
-}
-.kpi-inline .l {
-  font-size: 8.5px;
-  color: #AAA;
-  margin-top: 1px;
-}
-.footer-right {
-  font-size: 9px;
-  color: #CCC;
-  text-align: right;
-  line-height: 1.8;
-}
-
-/* ── 分割线 ── */
-.sec-divider {
-  height: 1px;
-  background: #E8E8E4;
-  margin: 12px 0;
-}
-
-/* ── 小标签 ── */
-.chip {
-  display: inline-block;
-  font-size: 8.5px;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 2px;
-  letter-spacing: 0.5px;
-}
-.chip-blue { background: #EEF2FF; color: #1E3FBF; }
-.chip-red { background: #FEF2EE; color: #E8420A; }
-.chip-green { background: #ECFDF5; color: #059669; }
-.chip-amber { background: #FEFCE8; color: #B45309; }
+.chip { display:inline-block; font-size:8px; font-weight:700; padding:1px 5px; border-radius:2px; }
+.cb { background:#EEF2FF; color:#1A3FBF; }
+.cr { background:#FEF2EE; color:#D63E09; }
+.cg { background:#ECFDF5; color:#059669; }
+.ca { background:#FEFCE8; color:#B45309; }
 </style>
 </head>
 <body>
 <div class="a4">
-<div class="inner">
+<div class="page">
 
-  <!-- ── HEAD ── -->
+  <!-- HEAD -->
   <div class="head">
-    <div class="brand">
-      <div style="font-family:'Noto Serif SC',serif;font-size:28px;font-weight:900;color:#0F1F5C;letter-spacing:2px;">校边通</div>
-      <div class="brand-dot" style="width:7px;height:7px;border-radius:50%;background:#E8420A;margin-bottom:6px;"></div>
-      <div style="font-size:11px;color:#AAA;font-weight:300;letter-spacing:1.5px;">ShopPulse Campus</div>
+    <div class="brand-row">
+      <div class="bn">校边通</div>
+      <div class="bd"></div>
+      <div class="bs">ShopPulse Campus · AI校园商家助手</div>
     </div>
-    <div class="head-meta">
-      <div class="tag">AI 校园商家助手</div>
-      <span class="date">轻量机会验证 · 2026</span>
-    </div>
-  </div>
-
-  <!-- ── 第一动作 ── -->
-  <div class="core-stmt">
-    <div class="label">第一动作</div>
-    <div class="stmt">
-      大学周边小微餐饮/便利店老板，输入一个校历节点（如 <em>「明天期中考试」</em>），
-      AI 在 <em>3分钟</em> 内输出可直接用的 <em>营销方案 + 备货建议</em>。
+    <div class="head-right">
+      <div class="htag">大学校园周边 · 小微餐饮</div>
+      <div style="font-size:9px;color:#CCC;">2026 轻量验证</div>
     </div>
   </div>
 
-  <!-- ── 三栏主体 ── -->
-  <div class="body-grid">
+  <!-- CORE STMT -->
+  <div class="core">
+    <div class="core-lbl">第一动作</div>
+    <div class="core-txt">
+      大学周边小微餐饮老板，输入 <em>「明天期中考试」</em> 等校历节点，
+      AI 在 <em>3分钟</em> 内输出可直接用的 <em>营销方案 + 备货建议</em>
+    </div>
+  </div>
 
-    <!-- COL 1: 机会判断 -->
-    <div>
-      <div class="col-title">
-        <div class="num">1</div>机会判断
-      </div>
+  <!-- ROW 1: 核心痛点 | 利益相关者 | Kano模型 -->
+  <div class="row1">
 
-      <div class="pain-item" style="border-left-color:#E8420A;">
-        <div class="pi">💸</div>
-        <div>
-          <div class="pt">平台抽成18-23%</div>
-          <div class="pd">做外卖往往不赚钱，但不做没流量</div>
-        </div>
+    <!-- 核心痛点 -->
+    <div class="panel">
+      <div class="slabel"><div class="sn">1</div>核心痛点</div>
+      <div class="p-item" style="border-color:#D63E09;">
+        <div class="p-ico">💸</div>
+        <div><div class="p-t">平台抽成18-23%</div><div class="p-d">做外卖往往不赚钱</div></div>
       </div>
-      <div class="pain-item" style="border-left-color:#1E3FBF;">
-        <div class="pi">📢</div>
-        <div>
-          <div class="pt">不会营销，错过节点</div>
-          <div class="pd">考试周/运动会流量高峰白白溜走</div>
-        </div>
+      <div class="p-item" style="border-color:#1A3FBF;">
+        <div class="p-ico">📢</div>
+        <div><div class="p-t">不会营销，错过节点</div><div class="p-d">考试周流量高峰白白溜走</div></div>
       </div>
-      <div class="pain-item" style="border-left-color:#F59E0B;">
-        <div class="pi">❄️</div>
-        <div>
-          <div class="pt">寒暑假收入近乎零</div>
-          <div class="pd">3-4个月固定成本压垮，无提前预案</div>
-        </div>
+      <div class="p-item" style="border-color:#F59E0B;">
+        <div class="p-ico">❄️</div>
+        <div><div class="p-t">寒暑假收入近零</div><div class="p-d">3-4个月固定成本压垮</div></div>
       </div>
-      <div class="pain-item" style="border-left-color:#10B981;">
-        <div class="pi">📦</div>
-        <div>
-          <div class="pt">备货靠经验瞎猜</div>
-          <div class="pd">天气/考试变量无法量化，缺货/积压</div>
-        </div>
+      <div class="p-item" style="border-color:#10B981;">
+        <div class="p-ico">📦</div>
+        <div><div class="p-t">备货靠经验瞎猜</div><div class="p-d">天气/考试变量无法量化</div></div>
       </div>
-      <div class="pain-item" style="border-left-color:#8B5CF6;">
-        <div class="pi">⭐</div>
-        <div>
-          <div class="pt">差评不会回，评分掉</div>
-          <div class="pd">缺乏高情商应对策略，影响排名</div>
-        </div>
-      </div>
-
-      <div style="margin-top:8px;background:#FEF2EE;border-radius:4px;padding:8px 10px;">
-        <div style="font-size:9px;font-weight:700;color:#E8420A;margin-bottom:3px;">为什么现在</div>
-        <div style="font-size:9.5px;color:#555;line-height:1.6;">
-          AI成本骤降 + 全网无校历垂直工具 +<br>
-          现有平台工具只服务连锁品牌
-        </div>
+      <div class="p-item" style="border-color:#8B5CF6;">
+        <div class="p-ico">⭐</div>
+        <div><div class="p-t">差评不会回</div><div class="p-d">评分下滑，平台排名跌</div></div>
       </div>
     </div>
 
-    <!-- COL 2: MVP功能 -->
-    <div>
-      <div class="col-title">
-        <div class="num">2</div>MVP 核心功能
-      </div>
+    <!-- 利益相关者可视化 SVG -->
+    <div class="panel">
+      <div class="slabel"><div class="sn">2</div>利益相关者分析</div>
+      <svg viewBox="0 0 210 148" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">
+        <!-- Center -->
+        <circle cx="105" cy="74" r="26" fill="#0A1640"/>
+        <text x="105" y="70" text-anchor="middle" fill="white" font-size="9.5" font-weight="700" font-family="sans-serif">校边通</text>
+        <text x="105" y="82" text-anchor="middle" fill="#5B7AFF" font-size="8" font-family="sans-serif">平台核心</text>
 
-      <div class="flow-box" style="margin-bottom:8px;">
-        <div class="flow-title">⚡ 核心交互流</div>
-        <div class="flow-steps">
-          <div class="flow-step">输入<br>校历节点</div>
-          <div class="flow-arrow">›</div>
-          <div class="flow-step">AI生成<br>营销方案</div>
-          <div class="flow-arrow">›</div>
-          <div class="flow-step">备货<br>建议</div>
-          <div class="flow-arrow">›</div>
-          <div class="flow-step">一键<br>复制发布</div>
-        </div>
-      </div>
+        <!-- 小微商家 -->
+        <circle cx="28" cy="40" r="20" fill="#EEF2FF" stroke="#1A3FBF" stroke-width="1.5"/>
+        <text x="28" y="37" text-anchor="middle" fill="#0A1640" font-size="8.5" font-weight="700" font-family="sans-serif">小微</text>
+        <text x="28" y="48" text-anchor="middle" fill="#0A1640" font-size="8.5" font-weight="700" font-family="sans-serif">商家</text>
+        <!-- arrow both ways -->
+        <line x1="47" y1="48" x2="81" y2="62" stroke="#1A3FBF" stroke-width="1.5" marker-end="url(#a1)"/>
+        <line x1="79" y1="65" x2="49" y2="52" stroke="#10B981" stroke-width="1.5" marker-end="url(#a2)" stroke-dasharray="3,2"/>
+        <text x="52" y="52" text-anchor="middle" fill="#1A3FBF" font-size="7.5" font-family="sans-serif">付费+数据</text>
+        <text x="68" y="63" text-anchor="middle" fill="#10B981" font-size="7.5" font-family="sans-serif">AI洞察</text>
 
-      <div class="feat-item">
-        <div class="feat-icon" style="background:#EEF2FF;">📅</div>
-        <div>
-          <div class="feat-name">校历感知引擎
-            <span class="feat-badge" style="background:#0F1F5C;color:white;">唯一差异化</span>
+        <!-- 学生消费者 -->
+        <circle cx="28" cy="118" r="20" fill="#FEF2EE" stroke="#D63E09" stroke-width="1.5"/>
+        <text x="28" y="115" text-anchor="middle" fill="#0A1640" font-size="8.5" font-weight="700" font-family="sans-serif">学生</text>
+        <text x="28" y="126" text-anchor="middle" fill="#0A1640" font-size="8.5" font-weight="700" font-family="sans-serif">消费者</text>
+        <line x1="28" y1="98" x2="28" y2="60" stroke="#D63E09" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="10" y="83" fill="#D63E09" font-size="7" font-family="sans-serif">消费</text>
+
+        <!-- 学校 -->
+        <circle cx="105" cy="16" r="14" fill="#F3EEFF" stroke="#8B5CF6" stroke-width="1.5"/>
+        <text x="105" y="13" text-anchor="middle" fill="#0A1640" font-size="8" font-weight="700" font-family="sans-serif">学校</text>
+        <text x="105" y="23" text-anchor="middle" fill="#6B7280" font-size="7" font-family="sans-serif">校历数据</text>
+        <line x1="105" y1="30" x2="105" y2="48" stroke="#8B5CF6" stroke-width="1.5" marker-end="url(#a3)"/>
+
+        <!-- 美团/饿了么 -->
+        <circle cx="182" cy="40" r="20" fill="#FEFCE8" stroke="#B45309" stroke-width="1.5"/>
+        <text x="182" y="37" text-anchor="middle" fill="#0A1640" font-size="8" font-weight="700" font-family="sans-serif">美团</text>
+        <text x="182" y="48" text-anchor="middle" fill="#0A1640" font-size="8" font-weight="700" font-family="sans-serif">饿了么</text>
+        <line x1="163" y1="48" x2="130" y2="63" stroke="#B45309" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#a4)"/>
+        <text x="152" y="54" text-anchor="middle" fill="#B45309" font-size="7" font-family="sans-serif">评价API</text>
+
+        <!-- 天气API -->
+        <circle cx="182" cy="118" r="18" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+        <text x="182" y="115" text-anchor="middle" fill="#0A1640" font-size="8" font-weight="700" font-family="sans-serif">天气</text>
+        <text x="182" y="126" text-anchor="middle" fill="#0A1640" font-size="8" font-weight="700" font-family="sans-serif">API</text>
+        <line x1="165" y1="108" x2="131" y2="85" stroke="#059669" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#a5)"/>
+        <text x="152" y="100" text-anchor="middle" fill="#059669" font-size="7" font-family="sans-serif">预测数据</text>
+
+        <defs>
+          <marker id="a1" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#1A3FBF"/></marker>
+          <marker id="a2" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#10B981"/></marker>
+          <marker id="a3" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#8B5CF6"/></marker>
+          <marker id="a4" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#B45309"/></marker>
+          <marker id="a5" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#059669"/></marker>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- Kano 模型 -->
+    <div class="panel">
+      <div class="slabel"><div class="sn">3</div>功能优先级 · Kano</div>
+      <svg viewBox="0 0 210 148" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">
+        <!-- Axes -->
+        <line x1="20" y1="130" x2="200" y2="130" stroke="#D1D5DB" stroke-width="1"/>
+        <line x1="20" y1="10" x2="20" y2="130" stroke="#D1D5DB" stroke-width="1"/>
+        <!-- Axis labels -->
+        <text x="110" y="142" text-anchor="middle" fill="#9CA3AF" font-size="8" font-family="sans-serif">功能完善度 →</text>
+        <text x="12" y="75" fill="#9CA3AF" font-size="8" font-family="sans-serif" transform="rotate(-90,12,75)">满意度 ↑</text>
+        <!-- Must-be curve (grey dashed) -->
+        <path d="M22,20 Q80,22 110,75 Q145,128 195,135" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <!-- Performance curve (blue solid) -->
+        <path d="M22,130 Q110,80 195,20" fill="none" stroke="#1A3FBF" stroke-width="1.8"/>
+        <!-- Excitement curve (orange dashed) -->
+        <path d="M22,130 Q60,128 110,75 Q160,22 195,15" fill="none" stroke="#D63E09" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+        <!-- Feature dots -->
+        <!-- Must-be: 校历查看, 文案生成 -->
+        <circle cx="155" cy="110" r="4" fill="#9CA3AF"/>
+        <text x="157" y="106" fill="#555" font-size="7.5" font-family="sans-serif">校历查看</text>
+        <circle cx="130" cy="120" r="4" fill="#9CA3AF"/>
+        <text x="132" y="116" fill="#555" font-size="7.5" font-family="sans-serif">文案生成</text>
+        <!-- Performance: 备货预测, 营销ROI -->
+        <circle cx="148" cy="44" r="4.5" fill="#1A3FBF"/>
+        <text x="150" y="40" fill="#1A3FBF" font-size="7.5" font-weight="600" font-family="sans-serif">备货预测</text>
+        <circle cx="170" cy="30" r="4.5" fill="#1A3FBF"/>
+        <text x="172" y="26" fill="#1A3FBF" font-size="7.5" font-weight="600" font-family="sans-serif">营销ROI</text>
+        <!-- Excitement: 跨店联动, 差评拦截 -->
+        <circle cx="175" cy="22" r="5.5" fill="#D63E09"/>
+        <text x="160" y="17" fill="#D63E09" font-size="8" font-weight="700" font-family="sans-serif">跨店联动</text>
+        <circle cx="145" cy="36" r="5" fill="#D63E09"/>
+        <text x="130" y="32" fill="#D63E09" font-size="8" font-weight="700" font-family="sans-serif">差评拦截</text>
+
+        <!-- Legend -->
+        <line x1="22" y1="148" x2="35" y2="148" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <text x="37" y="151" fill="#9CA3AF" font-size="7.5" font-family="sans-serif">基本型</text>
+        <line x1="75" y1="148" x2="88" y2="148" stroke="#1A3FBF" stroke-width="1.5"/>
+        <text x="90" y="151" fill="#1A3FBF" font-size="7.5" font-family="sans-serif">期望型</text>
+        <line x1="128" y1="148" x2="141" y2="148" stroke="#D63E09" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <text x="143" y="151" fill="#D63E09" font-size="7.5" font-family="sans-serif">兴奋型</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ROW 2: AARRR | 4P | 2周验证 -->
+  <div class="row2">
+
+    <!-- AARRR 漏斗 -->
+    <div class="panel">
+      <div class="slabel"><div class="sn">4</div>增长漏斗 · AARRR</div>
+      <svg viewBox="0 0 210 148" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">
+        <!-- Funnel bars: 5 stages, getting narrower -->
+        <!-- Acquisition -->
+        <rect x="8" y="4" width="194" height="22" rx="3" fill="#0A1640"/>
+        <text x="15" y="18" fill="white" font-size="9" font-weight="700" font-family="sans-serif">A 获客 Acquisition</text>
+        <text x="195" y="18" text-anchor="end" fill="rgba(255,255,255,.6)" font-size="8" font-family="sans-serif">地推+裂变</text>
+
+        <!-- Activation -->
+        <rect x="18" y="32" width="174" height="22" rx="3" fill="#1A3FBF"/>
+        <text x="25" y="46" fill="white" font-size="9" font-weight="700" font-family="sans-serif">A 激活 Activation</text>
+        <text x="185" y="46" text-anchor="end" fill="rgba(255,255,255,.7)" font-size="8" font-family="sans-serif">&gt;5%转化</text>
+
+        <!-- Retention -->
+        <rect x="32" y="60" width="146" height="22" rx="3" fill="#2563EB"/>
+        <text x="39" y="74" fill="white" font-size="9" font-weight="700" font-family="sans-serif">R 留存 Retention</text>
+        <text x="171" y="74" text-anchor="end" fill="rgba(255,255,255,.7)" font-size="8" font-family="sans-serif">&gt;70%月留存</text>
+
+        <!-- Revenue -->
+        <rect x="50" y="88" width="110" height="22" rx="3" fill="#D63E09"/>
+        <text x="57" y="102" fill="white" font-size="9" font-weight="700" font-family="sans-serif">R 变现 Revenue</text>
+        <text x="153" y="102" text-anchor="end" fill="rgba(255,255,255,.7)" font-size="8" font-family="sans-serif">¥59+/月</text>
+
+        <!-- Referral -->
+        <rect x="70" y="116" width="70" height="22" rx="3" fill="#059669"/>
+        <text x="77" y="130" fill="white" font-size="9" font-weight="700" font-family="sans-serif">R 传播</text>
+        <text x="133" y="130" text-anchor="end" fill="rgba(255,255,255,.7)" font-size="8" font-family="sans-serif">返现¥20</text>
+
+        <!-- Side labels -->
+        <text x="206" y="18" fill="#0A1640" font-size="7.5" font-family="sans-serif" text-anchor="start">100%</text>
+        <text x="196" y="46" fill="#1A3FBF" font-size="7.5" font-family="sans-serif">60%</text>
+        <text x="182" y="74" fill="#2563EB" font-size="7.5" font-family="sans-serif">40%</text>
+        <text x="164" y="102" fill="#D63E09" font-size="7.5" font-family="sans-serif">15%</text>
+        <text x="144" y="130" fill="#059669" font-size="7.5" font-family="sans-serif">NPS>30</text>
+      </svg>
+    </div>
+
+    <!-- 4P 分析 -->
+    <div class="panel">
+      <div class="slabel"><div class="sn">5</div>市场营销 · 4P</div>
+      <div class="p4grid">
+        <div class="p4c" style="background:#F0F4FF;">
+          <div class="p4h" style="color:#1A3FBF;">📱 Product 产品</div>
+          <div class="p4body">
+            校历驱动营销自动化<br>
+            天气×校历备货预测<br>
+            AI差评预警拦截<br>
+            跨店联动增收
           </div>
-          <div class="feat-desc">自动同步学校校历，节点驱动营销推荐</div>
+        </div>
+        <div class="p4c" style="background:#FEF9EE;">
+          <div class="p4h" style="color:#B45309;">💰 Price 定价</div>
+          <div class="p4body">
+            免费版 ¥0（引流钩子）<br>
+            标准版 <b style="color:#0A1640;">¥59/月</b>（主力）<br>
+            专业版 ¥199/月<br>
+            LTV/CAC &gt; 4.4x ✓
+          </div>
+        </div>
+        <div class="p4c" style="background:#ECFDF5;">
+          <div class="p4h" style="color:#059669;">📍 Place 渠道</div>
+          <div class="p4body">
+            校园周边地推扫街<br>
+            微信小程序（无下载）<br>
+            店主群口碑裂变<br>
+            平台服务商BD
+          </div>
+        </div>
+        <div class="p4c" style="background:#F5F0FF;">
+          <div class="p4h" style="color:#7C3AED;">📣 Promo 推广</div>
+          <div class="p4body">
+            7天免费体验<br>
+            邀请返现¥20/人<br>
+            考试季集中地推<br>
+            ROI案例展示
+          </div>
         </div>
       </div>
-      <div class="feat-item">
-        <div class="feat-icon" style="background:#FEF2EE;">📣</div>
-        <div>
-          <div class="feat-name">AI营销中心</div>
-          <div class="feat-desc">海报文案+外卖平台文案一键生成，含发布时间建议</div>
-        </div>
-      </div>
-      <div class="feat-item">
-        <div class="feat-icon" style="background:#ECFDF5;">📦</div>
-        <div>
-          <div class="feat-name">智能备货预测</div>
-          <div class="feat-desc">天气×校历双因子，输出明日SKU补货量</div>
-        </div>
-      </div>
-      <div class="feat-item">
-        <div class="feat-icon" style="background:#F3EEFF;">⭐</div>
-        <div>
-          <div class="feat-name">差评预警拦截</div>
-          <div class="feat-desc">配送超时自动安抚+AI高情商回复模板</div>
-        </div>
-      </div>
-      <div class="feat-item">
-        <div class="feat-icon" style="background:#FEFCE8;">🤝</div>
-        <div>
-          <div class="feat-name">跨店联动（专业版）</div>
-          <div class="feat-desc">AI匹配周边互补商品组合，自动分账结算</div>
-        </div>
+      <div style="margin-top:6px;background:#0A1640;border-radius:3px;padding:5px 9px;font-size:9px;color:rgba(255,255,255,.85);line-height:1.5;">
+        <span style="color:#FBB040;font-weight:700;">核心壁垒：</span>校历感知 + 校园数据积累，全网无同类垂直产品
       </div>
     </div>
 
-    <!-- COL 3: 商业判断 -->
-    <div>
-      <div class="col-title">
-        <div class="num">3</div>商业判断
-      </div>
-
-      <div class="price-row">
-        <div class="price-card">
-          <div class="price-tier">免费版</div>
-          <div class="price-val">¥0</div>
-          <div class="price-sub">引流钩子</div>
+    <!-- 2周验证计划 -->
+    <div class="panel">
+      <div class="slabel"><div class="sn">6</div>2周验证计划</div>
+      <div class="tl">
+        <div class="tli">
+          <div class="tl-dot">1</div>
+          <div class="tl-day">Day 1–3 · 访谈</div>
+          <div class="tl-title">深访10位商家验证痛点</div>
+          <div class="tl-kpi">付费意愿评分 &gt; 3.5/5</div>
         </div>
-        <div class="price-card highlight">
-          <div class="price-tier">标准版 ✦</div>
-          <div class="price-val">¥59<span style="font-size:9px;font-weight:300;color:rgba(255,255,255,0.5);">/月</span></div>
-          <div class="price-sub">主力版本</div>
+        <div class="tli">
+          <div class="tl-dot">2</div>
+          <div class="tl-day">Day 4–7 · 获客</div>
+          <div class="tl-title">落地页上线 + 社群投放</div>
+          <div class="tl-kpi">注册转化率 &gt; 5%</div>
         </div>
-        <div class="price-card">
-          <div class="price-tier">专业版</div>
-          <div class="price-val">¥199<span style="font-size:9px;font-weight:300;color:#AAA;">/月</span></div>
-          <div class="price-sub">跨店联动</div>
+        <div class="tli">
+          <div class="tl-dot">3</div>
+          <div class="tl-day">Day 8–11 · 试用</div>
+          <div class="tl-title">5位店主试用原型迭代</div>
+          <div class="tl-kpi">NPS &gt; 30，满意度 &gt; 80%</div>
         </div>
-      </div>
-
-      <div class="biz-grid">
-        <div class="biz-card">
-          <div class="biz-num" style="color:#E8420A;">¥50-80</div>
-          <div class="biz-label">获客成本 CAC</div>
-        </div>
-        <div class="biz-card">
-          <div class="biz-num" style="color:#059669;">&gt;4.4x</div>
-          <div class="biz-label">LTV / CAC 比值</div>
-        </div>
-        <div class="biz-card">
-          <div class="biz-num">15%</div>
-          <div class="biz-label">免费→付费转化目标</div>
-        </div>
-        <div class="biz-card">
-          <div class="biz-num">¥2k</div>
-          <div class="biz-label">2周验证总预算</div>
+        <div class="tli">
+          <div class="tl-dot" style="background:#D63E09;">GO</div>
+          <div class="tl-day">Day 12–14 · 决策</div>
+          <div class="tl-title">数据复盘 Go / No-Go</div>
+          <div class="tl-kpi" style="color:#059669;">≥6/10人接受¥59/月 → 进入开发</div>
         </div>
       </div>
-
-      <div style="font-size:9px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:5px;">获客路径</div>
-      <div style="display:flex;flex-direction:column;gap:3px;margin-bottom:8px;">
-        <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#444;">
-          <div style="width:4px;height:4px;border-radius:50%;background:#0F1F5C;flex-shrink:0;"></div>
-          地推扫街（校园周边500m）<span class="chip chip-blue">主渠道</span>
+      <div style="margin-top:6px;display:flex;gap:4px;">
+        <div style="flex:1;background:#ECFDF5;border-radius:3px;padding:5px 7px;font-size:8.5px;color:#374151;line-height:1.5;">
+          <span style="color:#059669;font-weight:700;">资源：</span>1人全栈<br>预算 <b>¥2,000</b>
         </div>
-        <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#444;">
-          <div style="width:4px;height:4px;border-radius:50%;background:#E8420A;flex-shrink:0;"></div>
-          邀请返现¥20裂变<span class="chip chip-red">低成本</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#444;">
-          <div style="width:4px;height:4px;border-radius:50%;background:#059669;flex-shrink:0;"></div>
-          平台服务商BD合作<span class="chip chip-green">规模化</span>
+        <div style="flex:1;background:#FEF2EE;border-radius:3px;padding:5px 7px;font-size:8.5px;color:#374151;line-height:1.5;">
+          <span style="color:#D63E09;font-weight:700;">假设①</span> 店主为校历感知付费<br>
+          <span style="color:#D63E09;font-weight:700;">假设②</span> AI内容质量可用<br>
+          <span style="color:#D63E09;font-weight:700;">假设③</span> CAC &lt; ¥80
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ── 用户证据条 ── -->
-  <div style="font-size:9px;font-weight:700;letter-spacing:2px;color:#0F1F5C;margin-bottom:6px;">用户证据</div>
-  <div class="evidence-strip">
-    <div class="ev-card" style="border-left:3px solid #FF2D55;">
-      <div class="ev-source" style="color:#FF2D55;">小红书 / 抖音</div>
-      <div class="ev-text">"美团抽成太高了" / "寒假怎么活" — 相关话题播放量 <strong>&gt;2000万</strong></div>
-    </div>
-    <div class="ev-card" style="border-left:3px solid #FF6600;">
-      <div class="ev-source" style="color:#FF6600;">淘宝评论</div>
-      <div class="ev-text">购买外卖运营课的店主中 <strong>80%</strong> 评价「学了也不会用」</div>
-    </div>
-    <div class="ev-card" style="border-left:3px solid #00B900;">
-      <div class="ev-source" style="color:#00B900;">一手访谈</div>
-      <div class="ev-text">5位店主中 <strong>3位明确</strong> 表示「提前告诉我备货量，愿意付费」</div>
-    </div>
-    <div class="ev-card" style="border-left:3px solid #0F1F5C;">
-      <div class="ev-source" style="color:#0F1F5C;">竞品空白</div>
-      <div class="ev-text">全网 <strong>无任何产品</strong> 专注校历垂直场景，窗口完全打开</div>
+  <!-- ROW 3: 后续商业验证指标 -->
+  <div style="background:white;border:1px solid #E4E4DE;border-radius:4px;padding:7px 10px;">
+    <div class="slabel" style="margin-bottom:5px;"><div class="sn">7</div>后续关键商业验证指标</div>
+    <div class="row3">
+      <div class="kpi-card">
+        <div class="kpi-n">5%</div>
+        <div class="kpi-l">注册→激活<br>转化率</div>
+        <div class="kpi-t" style="color:#059669;">首次生成</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-n">70%</div>
+        <div class="kpi-l">月度活跃<br>留存率</div>
+        <div class="kpi-t" style="color:#059669;">粘性验证</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-n">15%</div>
+        <div class="kpi-l">免费→付费<br>转化率</div>
+        <div class="kpi-t" style="color:#1A3FBF;">核心商业</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-n">&gt;30</div>
+        <div class="kpi-l">净推荐值<br>NPS</div>
+        <div class="kpi-t" style="color:#059669;">满意度</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-n">¥80</div>
+        <div class="kpi-l">CAC红线<br>上限</div>
+        <div class="kpi-t" style="color:#D63E09;">超过即停</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-n">4.4x</div>
+        <div class="kpi-l">LTV/CAC<br>健康比值</div>
+        <div class="kpi-t" style="color:#1A3FBF;">单位经济</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-n">3天</div>
+        <div class="kpi-l">首次激活<br>时长目标</div>
+        <div class="kpi-t" style="color:#059669;">注册后3天</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-n">80%</div>
+        <div class="kpi-l">试用满意度<br>目标</div>
+        <div class="kpi-t" style="color:#1A3FBF;">内容质量</div>
+      </div>
     </div>
   </div>
 
-  <!-- ── 2周验证时间线 ── -->
-  <div style="font-size:9px;font-weight:700;letter-spacing:2px;color:#0F1F5C;margin-bottom:8px;">2周验证计划</div>
-  <div class="timeline" style="margin-bottom:14px;">
-    <div class="tl-item">
-      <div class="tl-dot">1</div>
-      <div class="tl-day">Day 1-3</div>
-      <div class="tl-title">访谈10位店主验证痛点</div>
-      <div class="tl-kpi">付费意愿 &gt;3.5/5</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot">2</div>
-      <div class="tl-day">Day 4-7</div>
-      <div class="tl-title">落地页上线 + 社群投放</div>
-      <div class="tl-kpi">注册转化 &gt;5%</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot">3</div>
-      <div class="tl-day">Day 8-11</div>
-      <div class="tl-title">5位店主试用原型迭代</div>
-      <div class="tl-kpi">NPS &gt;30 / 满意度 &gt;80%</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot" style="background:#E8420A;">Go</div>
-      <div class="tl-day">Day 12-14</div>
-      <div class="tl-title">数据复盘 Go/No-Go</div>
-      <div class="tl-kpi">≥6/10人接受¥59/月</div>
-    </div>
-  </div>
-
-  <!-- ── 底部 ── -->
-  <div class="footer">
-    <div class="footer-left">
-      <div class="kpi-inline">
-        <div class="n">500m</div>
-        <div class="l">服务半径</div>
-      </div>
-      <div class="kpi-inline">
-        <div class="n">10页</div>
-        <div class="l">高保真原型</div>
-      </div>
-      <div class="kpi-inline">
-        <div class="n">1人</div>
-        <div class="l">全栈验证</div>
-      </div>
-      <div class="kpi-inline">
-        <div class="n">¥2k</div>
-        <div class="l">启动预算</div>
-      </div>
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-kpis">
+      <div class="fk"><div class="fk-n">500m</div><div class="fk-l">服务半径</div></div>
+      <div class="fk"><div class="fk-n">10页</div><div class="fk-l">高保真原型</div></div>
+      <div class="fk"><div class="fk-n">1人</div><div class="fk-l">全栈验证</div></div>
+      <div class="fk"><div class="fk-n">¥2k</div><div class="fk-l">启动预算</div></div>
       <div style="width:1px;background:#E2E2DC;margin:0 4px;"></div>
-      <div style="padding:4px 10px;background:#0F1F5C;border-radius:3px;display:flex;align-items:center;">
-        <span style="font-size:9px;font-weight:700;color:#FBB040;letter-spacing:1px;">核心壁垒：校历感知 · 全网唯一垂直场景</span>
-      </div>
+      <div class="wall"><span>唯一差异化：校历感知 · 全网无同类垂直产品</span></div>
     </div>
-    <div class="footer-right">
-      校边通 · ShopPulse Campus<br>
-      大学校园周边小微商家 AI 经营助手
-    </div>
+    <div class="foot-right">校边通 · ShopPulse Campus<br>大学周边小微商家 AI 经营助手</div>
   </div>
 
 </div>
