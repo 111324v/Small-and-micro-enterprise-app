@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>校边通 · 单页方案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #C8C8C8;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 24px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* ── 精确A4尺寸 ── */
+.a4 {
+  width: 794px;
+  height: 1123px;
+  background: #FAFAF8;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+}
+
+/* ── 顶部色条 ── */
+.a4::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #0F1F5C 0%, #1E3FBF 40%, #E8420A 70%, #F59E0B 100%);
+}
+
+/* ── 左侧装饰竖线 ── */
+.a4::after {
+  content: '';
+  position: absolute;
+  top: 40px; left: 28px;
+  width: 2px;
+  height: 960px;
+  background: linear-gradient(to bottom, #0F1F5C, rgba(15,31,92,0.05));
+}
+
+.inner {
+  padding: 36px 44px 32px 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── 头部 ── */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E2E2DC;
+  margin-bottom: 18px;
+}
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.brand-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: #0F1F5C;
+  letter-spacing: 2px;
+}
+.brand-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #E8420A;
+  margin-bottom: 5px;
+}
+.brand-sub {
+  font-size: 11.5px;
+  color: #888;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+}
+.head-meta {
+  text-align: right;
+}
+.head-meta .tag {
+  display: inline-block;
+  background: #0F1F5C;
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+.head-meta .date {
+  font-size: 10px;
+  color: #AAA;
+  display: block;
+}
+
+/* ── 核心定义行 ── */
+.core-stmt {
+  background: #0F1F5C;
+  color: white;
+  padding: 13px 18px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.core-stmt .label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.45);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.core-stmt .stmt {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: white;
+}
+.core-stmt .stmt em {
+  font-style: normal;
+  color: #FBB040;
+  font-weight: 700;
+}
+
+/* ── 主体三栏布局 ── */
+.body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.col-title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #0F1F5C;
+  text-transform: uppercase;
+  border-bottom: 1.5px solid #0F1F5C;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.col-title .num {
+  background: #0F1F5C;
+  color: white;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  flex-shrink: 0;
+}
+
+/* ── 痛点卡片 ── */
+.pain-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 7px 9px;
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  border-left: 2.5px solid;
+}
+.pain-item .pi {
+  font-size: 14px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.pain-item .pt {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+.pain-item .pd {
+  font-size: 9.5px;
+  color: #888;
+  margin-top: 1px;
+  line-height: 1.4;
+}
+
+/* ── 功能列表 ── */
+.feat-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 7px 0;
+  border-bottom: 1px solid #EFEFEB;
+}
+.feat-item:last-child { border-bottom: none; }
+.feat-icon {
+  width: 26px; height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.feat-name {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+.feat-desc {
+  font-size: 9.5px;
+  color: #888;
+  margin-top: 1px;
+  line-height: 1.4;
+}
+.feat-badge {
+  display: inline-block;
+  font-size: 8.5px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 2px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+/* ── 商业数据 ── */
+.biz-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.biz-card {
+  background: white;
+  border-radius: 4px;
+  padding: 9px 11px;
+  border: 1px solid #E8E8E4;
+}
+.biz-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: #0F1F5C;
+  line-height: 1;
+}
+.biz-label {
+  font-size: 9px;
+  color: #AAA;
+  margin-top: 2px;
+}
+.price-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.price-card {
+  flex: 1;
+  border-radius: 4px;
+  padding: 8px 10px;
+  text-align: center;
+  border: 1px solid #E8E8E4;
+  background: white;
+}
+.price-card.highlight {
+  background: #0F1F5C;
+  border-color: #0F1F5C;
+}
+.price-tier {
+  font-size: 8.5px;
+  color: #AAA;
+  margin-bottom: 3px;
+}
+.price-card.highlight .price-tier { color: rgba(255,255,255,0.5); }
+.price-val {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  font-weight: 900;
+  color: #0F1F5C;
+  line-height: 1;
+}
+.price-card.highlight .price-val { color: white; }
+.price-sub {
+  font-size: 8.5px;
+  color: #888;
+  margin-top: 2px;
+}
+.price-card.highlight .price-sub { color: rgba(255,255,255,0.6); }
+
+/* ── 中间大功能展示 ── */
+.flow-box {
+  background: white;
+  border: 1px solid #E8E8E4;
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+}
+.flow-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: #0F1F5C;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.flow-steps {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.flow-step {
+  flex: 1;
+  background: #F5F5F0;
+  border-radius: 3px;
+  padding: 6px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: center;
+  line-height: 1.3;
+}
+.flow-arrow {
+  color: #0F1F5C;
+  font-size: 12px;
+  flex-shrink: 0;
+  opacity: 0.4;
+}
+
+/* ── 证据条 ── */
+.evidence-strip {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.ev-card {
+  flex: 1;
+  background: white;
+  border: 1px solid #E8E8E4;
+  border-radius: 4px;
+  padding: 8px 10px;
+  position: relative;
+  overflow: hidden;
+}
+.ev-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+}
+.ev-source {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+.ev-text {
+  font-size: 9.5px;
+  color: #555;
+  line-height: 1.5;
+}
+.ev-text strong { color: #E8420A; font-weight: 700; }
+
+/* ── 时间线 ── */
+.timeline {
+  display: flex;
+  gap: 0;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  height: 1.5px;
+  background: #E2E2DC;
+}
+.tl-item {
+  flex: 1;
+  position: relative;
+  padding-top: 28px;
+  padding-left: 2px;
+  padding-right: 4px;
+}
+.tl-dot {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #0F1F5C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: 700;
+  color: white;
+  z-index: 1;
+}
+.tl-day {
+  font-size: 9px;
+  font-weight: 700;
+  color: #0F1F5C;
+  margin-bottom: 2px;
+}
+.tl-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+.tl-kpi {
+  font-size: 9px;
+  color: #E8420A;
+  font-weight: 600;
+}
+
+/* ── 竞争差异化 ── */
+.diff-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.diff-card {
+  flex: 1;
+  padding: 9px 11px;
+  border-radius: 4px;
+  border: 1px solid #E8E8E4;
+  background: white;
+}
+.diff-dim {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #888;
+  margin-bottom: 4px;
+}
+.diff-val {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+.diff-card.ours {
+  background: #0F1F5C;
+  border-color: #0F1F5C;
+}
+.diff-card.ours .diff-dim { color: rgba(255,255,255,0.4); }
+.diff-card.ours .diff-val { color: white; }
+
+/* ── 底部 ── */
+.footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #E2E2DC;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-left {
+  display: flex;
+  gap: 16px;
+}
+.kpi-inline {
+  text-align: center;
+}
+.kpi-inline .n {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: #0F1F5C;
+  line-height: 1;
+}
+.kpi-inline .l {
+  font-size: 8.5px;
+  color: #AAA;
+  margin-top: 1px;
+}
+.footer-right {
+  font-size: 9px;
+  color: #CCC;
+  text-align: right;
+  line-height: 1.8;
+}
+
+/* ── 分割线 ── */
+.sec-divider {
+  height: 1px;
+  background: #E8E8E4;
+  margin: 12px 0;
+}
+
+/* ── 小标签 ── */
+.chip {
+  display: inline-block;
+  font-size: 8.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+.chip-blue { background: #EEF2FF; color: #1E3FBF; }
+.chip-red { background: #FEF2EE; color: #E8420A; }
+.chip-green { background: #ECFDF5; color: #059669; }
+.chip-amber { background: #FEFCE8; color: #B45309; }
+</style>
+</head>
+<body>
+<div class="a4">
+<div class="inner">
+
+  <!-- ── HEAD ── -->
+  <div class="head">
+    <div class="brand">
+      <div style="font-family:'Noto Serif SC',serif;font-size:28px;font-weight:900;color:#0F1F5C;letter-spacing:2px;">校边通</div>
+      <div class="brand-dot" style="width:7px;height:7px;border-radius:50%;background:#E8420A;margin-bottom:6px;"></div>
+      <div style="font-size:11px;color:#AAA;font-weight:300;letter-spacing:1.5px;">ShopPulse Campus</div>
+    </div>
+    <div class="head-meta">
+      <div class="tag">AI 校园商家助手</div>
+      <span class="date">轻量机会验证 · 2026</span>
+    </div>
+  </div>
+
+  <!-- ── 第一动作 ── -->
+  <div class="core-stmt">
+    <div class="label">第一动作</div>
+    <div class="stmt">
+      大学周边小微餐饮/便利店老板，输入一个校历节点（如 <em>「明天期中考试」</em>），
+      AI 在 <em>3分钟</em> 内输出可直接用的 <em>营销方案 + 备货建议</em>。
+    </div>
+  </div>
+
+  <!-- ── 三栏主体 ── -->
+  <div class="body-grid">
+
+    <!-- COL 1: 机会判断 -->
+    <div>
+      <div class="col-title">
+        <div class="num">1</div>机会判断
+      </div>
+
+      <div class="pain-item" style="border-left-color:#E8420A;">
+        <div class="pi">💸</div>
+        <div>
+          <div class="pt">平台抽成18-23%</div>
+          <div class="pd">做外卖往往不赚钱，但不做没流量</div>
+        </div>
+      </div>
+      <div class="pain-item" style="border-left-color:#1E3FBF;">
+        <div class="pi">📢</div>
+        <div>
+          <div class="pt">不会营销，错过节点</div>
+          <div class="pd">考试周/运动会流量高峰白白溜走</div>
+        </div>
+      </div>
+      <div class="pain-item" style="border-left-color:#F59E0B;">
+        <div class="pi">❄️</div>
+        <div>
+          <div class="pt">寒暑假收入近乎零</div>
+          <div class="pd">3-4个月固定成本压垮，无提前预案</div>
+        </div>
+      </div>
+      <div class="pain-item" style="border-left-color:#10B981;">
+        <div class="pi">📦</div>
+        <div>
+          <div class="pt">备货靠经验瞎猜</div>
+          <div class="pd">天气/考试变量无法量化，缺货/积压</div>
+        </div>
+      </div>
+      <div class="pain-item" style="border-left-color:#8B5CF6;">
+        <div class="pi">⭐</div>
+        <div>
+          <div class="pt">差评不会回，评分掉</div>
+          <div class="pd">缺乏高情商应对策略，影响排名</div>
+        </div>
+      </div>
+
+      <div style="margin-top:8px;background:#FEF2EE;border-radius:4px;padding:8px 10px;">
+        <div style="font-size:9px;font-weight:700;color:#E8420A;margin-bottom:3px;">为什么现在</div>
+        <div style="font-size:9.5px;color:#555;line-height:1.6;">
+          AI成本骤降 + 全网无校历垂直工具 +<br>
+          现有平台工具只服务连锁品牌
+        </div>
+      </div>
+    </div>
+
+    <!-- COL 2: MVP功能 -->
+    <div>
+      <div class="col-title">
+        <div class="num">2</div>MVP 核心功能
+      </div>
+
+      <div class="flow-box" style="margin-bottom:8px;">
+        <div class="flow-title">⚡ 核心交互流</div>
+        <div class="flow-steps">
+          <div class="flow-step">输入<br>校历节点</div>
+          <div class="flow-arrow">›</div>
+          <div class="flow-step">AI生成<br>营销方案</div>
+          <div class="flow-arrow">›</div>
+          <div class="flow-step">备货<br>建议</div>
+          <div class="flow-arrow">›</div>
+          <div class="flow-step">一键<br>复制发布</div>
+        </div>
+      </div>
+
+      <div class="feat-item">
+        <div class="feat-icon" style="background:#EEF2FF;">📅</div>
+        <div>
+          <div class="feat-name">校历感知引擎
+            <span class="feat-badge" style="background:#0F1F5C;color:white;">唯一差异化</span>
+          </div>
+          <div class="feat-desc">自动同步学校校历，节点驱动营销推荐</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon" style="background:#FEF2EE;">📣</div>
+        <div>
+          <div class="feat-name">AI营销中心</div>
+          <div class="feat-desc">海报文案+外卖平台文案一键生成，含发布时间建议</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon" style="background:#ECFDF5;">📦</div>
+        <div>
+          <div class="feat-name">智能备货预测</div>
+          <div class="feat-desc">天气×校历双因子，输出明日SKU补货量</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon" style="background:#F3EEFF;">⭐</div>
+        <div>
+          <div class="feat-name">差评预警拦截</div>
+          <div class="feat-desc">配送超时自动安抚+AI高情商回复模板</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon" style="background:#FEFCE8;">🤝</div>
+        <div>
+          <div class="feat-name">跨店联动（专业版）</div>
+          <div class="feat-desc">AI匹配周边互补商品组合，自动分账结算</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COL 3: 商业判断 -->
+    <div>
+      <div class="col-title">
+        <div class="num">3</div>商业判断
+      </div>
+
+      <div class="price-row">
+        <div class="price-card">
+          <div class="price-tier">免费版</div>
+          <div class="price-val">¥0</div>
+          <div class="price-sub">引流钩子</div>
+        </div>
+        <div class="price-card highlight">
+          <div class="price-tier">标准版 ✦</div>
+          <div class="price-val">¥59<span style="font-size:9px;font-weight:300;color:rgba(255,255,255,0.5);">/月</span></div>
+          <div class="price-sub">主力版本</div>
+        </div>
+        <div class="price-card">
+          <div class="price-tier">专业版</div>
+          <div class="price-val">¥199<span style="font-size:9px;font-weight:300;color:#AAA;">/月</span></div>
+          <div class="price-sub">跨店联动</div>
+        </div>
+      </div>
+
+      <div class="biz-grid">
+        <div class="biz-card">
+          <div class="biz-num" style="color:#E8420A;">¥50-80</div>
+          <div class="biz-label">获客成本 CAC</div>
+        </div>
+        <div class="biz-card">
+          <div class="biz-num" style="color:#059669;">&gt;4.4x</div>
+          <div class="biz-label">LTV / CAC 比值</div>
+        </div>
+        <div class="biz-card">
+          <div class="biz-num">15%</div>
+          <div class="biz-label">免费→付费转化目标</div>
+        </div>
+        <div class="biz-card">
+          <div class="biz-num">¥2k</div>
+          <div class="biz-label">2周验证总预算</div>
+        </div>
+      </div>
+
+      <div style="font-size:9px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:5px;">获客路径</div>
+      <div style="display:flex;flex-direction:column;gap:3px;margin-bottom:8px;">
+        <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#444;">
+          <div style="width:4px;height:4px;border-radius:50%;background:#0F1F5C;flex-shrink:0;"></div>
+          地推扫街（校园周边500m）<span class="chip chip-blue">主渠道</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#444;">
+          <div style="width:4px;height:4px;border-radius:50%;background:#E8420A;flex-shrink:0;"></div>
+          邀请返现¥20裂变<span class="chip chip-red">低成本</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#444;">
+          <div style="width:4px;height:4px;border-radius:50%;background:#059669;flex-shrink:0;"></div>
+          平台服务商BD合作<span class="chip chip-green">规模化</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 用户证据条 ── -->
+  <div style="font-size:9px;font-weight:700;letter-spacing:2px;color:#0F1F5C;margin-bottom:6px;">用户证据</div>
+  <div class="evidence-strip">
+    <div class="ev-card" style="border-left:3px solid #FF2D55;">
+      <div class="ev-source" style="color:#FF2D55;">小红书 / 抖音</div>
+      <div class="ev-text">"美团抽成太高了" / "寒假怎么活" — 相关话题播放量 <strong>&gt;2000万</strong></div>
+    </div>
+    <div class="ev-card" style="border-left:3px solid #FF6600;">
+      <div class="ev-source" style="color:#FF6600;">淘宝评论</div>
+      <div class="ev-text">购买外卖运营课的店主中 <strong>80%</strong> 评价「学了也不会用」</div>
+    </div>
+    <div class="ev-card" style="border-left:3px solid #00B900;">
+      <div class="ev-source" style="color:#00B900;">一手访谈</div>
+      <div class="ev-text">5位店主中 <strong>3位明确</strong> 表示「提前告诉我备货量，愿意付费」</div>
+    </div>
+    <div class="ev-card" style="border-left:3px solid #0F1F5C;">
+      <div class="ev-source" style="color:#0F1F5C;">竞品空白</div>
+      <div class="ev-text">全网 <strong>无任何产品</strong> 专注校历垂直场景，窗口完全打开</div>
+    </div>
+  </div>
+
+  <!-- ── 2周验证时间线 ── -->
+  <div style="font-size:9px;font-weight:700;letter-spacing:2px;color:#0F1F5C;margin-bottom:8px;">2周验证计划</div>
+  <div class="timeline" style="margin-bottom:14px;">
+    <div class="tl-item">
+      <div class="tl-dot">1</div>
+      <div class="tl-day">Day 1-3</div>
+      <div class="tl-title">访谈10位店主验证痛点</div>
+      <div class="tl-kpi">付费意愿 &gt;3.5/5</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">2</div>
+      <div class="tl-day">Day 4-7</div>
+      <div class="tl-title">落地页上线 + 社群投放</div>
+      <div class="tl-kpi">注册转化 &gt;5%</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">3</div>
+      <div class="tl-day">Day 8-11</div>
+      <div class="tl-title">5位店主试用原型迭代</div>
+      <div class="tl-kpi">NPS &gt;30 / 满意度 &gt;80%</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:#E8420A;">Go</div>
+      <div class="tl-day">Day 12-14</div>
+      <div class="tl-title">数据复盘 Go/No-Go</div>
+      <div class="tl-kpi">≥6/10人接受¥59/月</div>
+    </div>
+  </div>
+
+  <!-- ── 底部 ── -->
+  <div class="footer">
+    <div class="footer-left">
+      <div class="kpi-inline">
+        <div class="n">500m</div>
+        <div class="l">服务半径</div>
+      </div>
+      <div class="kpi-inline">
+        <div class="n">10页</div>
+        <div class="l">高保真原型</div>
+      </div>
+      <div class="kpi-inline">
+        <div class="n">1人</div>
+        <div class="l">全栈验证</div>
+      </div>
+      <div class="kpi-inline">
+        <div class="n">¥2k</div>
+        <div class="l">启动预算</div>
+      </div>
+      <div style="width:1px;background:#E2E2DC;margin:0 4px;"></div>
+      <div style="padding:4px 10px;background:#0F1F5C;border-radius:3px;display:flex;align-items:center;">
+        <span style="font-size:9px;font-weight:700;color:#FBB040;letter-spacing:1px;">核心壁垒：校历感知 · 全网唯一垂直场景</span>
+      </div>
+    </div>
+    <div class="footer-right">
+      校边通 · ShopPulse Campus<br>
+      大学校园周边小微商家 AI 经营助手
+    </div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
