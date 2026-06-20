@@ -203,19 +203,6 @@ body {
           <div class="sub" style="margin-top:1px;">评分持续下滑，影响排名</div>
         </div>
       </div>
-      <!-- 为什么现在值得做：独立醒目标题 -->
-      <div style="background:linear-gradient(135deg,#ECFDF5 0%,#F0FDF4 100%);border-radius:4px;padding:6px 10px;margin-bottom:6px;flex-shrink:0;border:1.5px solid #059669;">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
-          <span style="font-size:14px;">💡</span>
-          <span style="font-size:10px;font-weight:900;color:#059669;letter-spacing:1px;">为什么现在值得做？</span>
-        </div>
-        <div class="body">
-          <span style="font-weight:700;color:#0B1A4E;">① 需求爆发</span> — 小红书/抖音「校园周边开店」话题播放量超千万，创业者涌入但成功率低；
-          <span style="font-weight:700;color:#0B1A4E;">② 竞品空白</span> — 大厂做通用工具，无人针对校园场景做垂直产品；
-          <span style="font-weight:700;color:#0B1A4E;">③ AI成熟</span> — 大模型能力足以生成营销文案和备货建议，技术门槛大幅降低；
-          <span style="font-weight:700;color:#0B1A4E;">④ 成本窗口</span> — AI API调用成本持续下降，¥59/月定价可覆盖成本并盈利。
-        </div>
-      </div>
       <!-- 竞品分析，flex:1 撑满剩余空间 -->
       <div style="flex:1;background:#F9F9F6;border-radius:3px;padding:7px 8px;display:flex;flex-direction:column;gap:4px;">
         <div class="h2" style="margin-bottom:1px;">现有竞品对比 · 校边通的差异化窗口</div>
@@ -243,6 +230,16 @@ body {
         <div style="background:#EEF2FF;border-radius:3px;padding:4px 8px;color:#1B3DBF;font-weight:600;line-height:1.5;flex-shrink:0;" class="body">
           🎯 所有竞品均无「校历感知」——这是唯一不可被复制的垂直壁垒
         </div>
+        <!-- 为什么现在值得做 -->
+        <div style="background:#F0FDF4;border-radius:3px;padding:5px 8px;margin-top:2px;flex-shrink:0;">
+          <div style="font-size:9px;font-weight:700;color:#059669;margin-bottom:3px;">为什么现在值得做？</div>
+          <div class="sub">
+            <span style="font-weight:700;color:#0B1A4E;">① 需求爆发</span> — 校园开店话题播放量超千万；
+            <span style="font-weight:700;color:#0B1A4E;">② 竞品空白</span> — 无人做校园垂直产品；
+            <span style="font-weight:700;color:#0B1A4E;">③ AI成熟</span> — 技术门槛大幅降低；
+            <span style="font-weight:700;color:#0B1A4E;">④ 成本窗口</span> — ¥59/月可盈利。
+          </div>
+        </div>
       </div>
     </div>
 
@@ -254,7 +251,7 @@ body {
         <div class="ev-txt">"美团抽成太高了" / "寒假怎么活" — 相关话题播放量 <strong>&gt;2000万</strong></div>
       </div>
       <div class="ev-item">
-        <div class="ev-src" style="background:#FF6D00;">抖音</div>
+        <div class="ev-src" style="background:#1a1a1a;">抖音</div>
         <div class="ev-txt">"校园周边奶茶店开店攻略"单条播放 <strong>50-200万</strong>，差评回复话题超 <strong>300万</strong></div>
       </div>
       <div class="ev-item">
@@ -312,7 +309,7 @@ body {
       <!-- Kano图，flex:1撑满剩余空间 -->
       <div style="flex:1;display:flex;flex-direction:column;min-height:0;">
         <div class="h2" style="margin-bottom:3px;flex-shrink:0;">Kano 模型 · 功能优先级</div>
-        <svg viewBox="0 0 310 105" style="width:100%;flex:1;min-height:80px;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 310 105" style="width:100%;flex:1;min-height:60px;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <rect x="10" y="5" width="290" height="80" fill="#FAFAFA" rx="3"/>
           <line x1="10" y1="85" x2="300" y2="85" stroke="#D1D5DB" stroke-width="1"/>
           <line x1="10" y1="5" x2="10" y2="85" stroke="#D1D5DB" stroke-width="1"/>
@@ -325,9 +322,9 @@ body {
           <!-- 兴奋型曲线（红色虚线） -->
           <path d="M12,85 Q60,83 155,48 Q230,18 295,8" fill="none" stroke="#CC3A06" stroke-width="1.5" stroke-dasharray="5,3"/>
           <!-- 基本型：校历事件 — 产品根基，没有它就没有价值主张 -->
-          <circle cx="80" cy="22" r="5" fill="#9CA3AF"/>
+          <circle cx="80" cy="22" r="5" fill="#1a1a1a"/>
           <rect x="46" y="14" width="56" height="11" rx="2" fill="white" opacity="0.92"/>
-          <text x="74" y="22" text-anchor="middle" fill="#9CA3AF" font-size="7" font-weight="700" font-family="sans-serif">校历事件🔧</text>
+          <text x="74" y="22" text-anchor="middle" fill="#1a1a1a" font-size="7" font-weight="700" font-family="sans-serif">校历事件🔧</text>
           <!-- 期望型：文案生成 — 质量直接决定满意度 -->
           <circle cx="175" cy="42" r="5" fill="#1B3DBF"/>
           <rect x="136" y="34" width="56" height="11" rx="2" fill="white" opacity="0.92"/>
@@ -411,7 +408,7 @@ body {
       <!-- 利益相关者关系图，flex:1撑满 -->
       <div style="flex:1;background:#F9F9F6;border-radius:3px;padding:4px;display:flex;flex-direction:column;min-height:0;">
         <div class="h2" style="margin-bottom:3px;">利益相关者关系图</div>
-        <svg viewBox="0 0 310 120" style="width:100%;flex:1;min-height:80px;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 310 120" style="width:100%;flex:1;min-height:60px;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="b1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#1B3DBF"/></marker>
             <marker id="b2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#059669"/></marker>
