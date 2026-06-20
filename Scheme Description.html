@@ -64,8 +64,8 @@ body {
 .panel { background:white;border:1px solid #E2E2DC;border-radius:4px;padding:8px 10px; display:flex; flex-direction:column; }
 
 /* ROW GRIDS */
-.row-ab { display:grid; grid-template-columns:1fr 1fr; gap:7px; flex:0.9; min-height:0; }
-.row-cd { display:grid; grid-template-columns:1fr 1fr; gap:7px; flex:0.9; min-height:0; }
+.row-ab { display:grid; grid-template-columns:1fr 1fr; gap:7px; flex:1; min-height:0; }
+.row-cd { display:grid; grid-template-columns:1fr 1fr; gap:7px; flex:1; min-height:0; }
 
 /* EVIDENCE */
 .ev-item { display:flex;gap:7px;align-items:flex-start;padding:4px 0;border-bottom:1px solid #EFEFEB;flex-shrink:0; }
@@ -307,8 +307,8 @@ body {
       </div>
       <!-- Kano图，flex:1撑满剩余空间 -->
       <div style="flex:1;display:flex;flex-direction:column;min-height:0;">
-        <div class="h2" style="margin-bottom:2px;flex-shrink:0;">Kano 模型 · 功能优先级</div>
-        <svg viewBox="0 0 310 105" style="width:100%;flex:1;min-height:0;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <div class="h2" style="margin-bottom:3px;flex-shrink:0;">Kano 模型 · 功能优先级</div>
+        <svg viewBox="0 0 310 105" style="width:100%;flex:1;min-height:80px;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <rect x="10" y="5" width="290" height="80" fill="#FAFAFA" rx="3"/>
           <line x1="10" y1="85" x2="300" y2="85" stroke="#D1D5DB" stroke-width="1"/>
           <line x1="10" y1="5" x2="10" y2="85" stroke="#D1D5DB" stroke-width="1"/>
@@ -405,9 +405,9 @@ body {
         </div>
       </div>
       <!-- 利益相关者关系图，flex:1撑满 -->
-      <div style="flex:1;background:#F9F9F6;border-radius:3px;padding:3px;display:flex;flex-direction:column;min-height:0;">
-        <div class="h2" style="margin-bottom:2px;">利益相关者关系图</div>
-        <svg viewBox="0 0 310 120" style="width:100%;flex:1;min-height:0;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <div style="flex:1;background:#F9F9F6;border-radius:3px;padding:4px;display:flex;flex-direction:column;min-height:0;">
+        <div class="h2" style="margin-bottom:3px;">利益相关者关系图</div>
+        <svg viewBox="0 0 310 120" style="width:100%;flex:1;min-height:80px;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="b1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#1B3DBF"/></marker>
             <marker id="b2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#059669"/></marker>
