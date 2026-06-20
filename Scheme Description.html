@@ -95,12 +95,12 @@ body {
 /* 横向时间轴 */
 .htl-row {
   display:grid; grid-template-columns:repeat(4,1fr);
-  position:relative; padding-top:18px;
+  position:relative; padding-top:12px;
 }
 /* 连接线横贯中间 */
 .htl-row::before {
   content:'';
-  position:absolute; top:9px; left:calc(12.5%); right:calc(12.5%);
+  position:absolute; top:11px; left:calc(12.5%); right:calc(12.5%);
   height:2px;
   background:linear-gradient(to right,#0B1A4E 0%,#0B1A4E 70%,rgba(11,26,78,.15) 100%);
 }
@@ -110,6 +110,7 @@ body {
   width:20px;height:20px;border-radius:50%;
   background:#0B1A4E;display:flex;align-items:center;justify-content:center;
   font-size:8px;font-weight:700;color:white;position:relative;z-index:1;
+  margin-top:2px;
 }
 .htl-day { font-size:7.5px;font-weight:700;color:#0B1A4E;margin-bottom:3px; }
 .htl-ti { font-size:9px;font-weight:600;color:#1a1a1a;line-height:1.4; }
@@ -139,12 +140,12 @@ body {
     <div style="display:flex;gap:10px;align-items:flex-start;">
       <!-- 原型按钮 + URL -->
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;">
-        <a href="校边通-原型2Demo.html" target="_blank"
+        <a href="prototype.html" target="_blank"
            style="display:inline-flex;align-items:center;gap:5px;text-decoration:none;padding:5px 13px;border-radius:4px;font-size:9.5px;font-weight:700;background:#2563EB;color:white;box-shadow:0 2px 8px rgba(37,99,235,.45);letter-spacing:.3px;">
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           查看原型 Demo →
         </a>
-        <span style="font-size:7px;color:#ABABAB;letter-spacing:.3px;">校边通-原型2Demo.html</span>
+        <span style="font-size:7px;color:#ABABAB;letter-spacing:.3px;">prototype.html</span>
       </div>
       <!-- GitHub按钮 + URL -->
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;">
@@ -245,10 +246,6 @@ body {
         <div class="ev-txt">购买外卖运营课的店主中 <strong>80%</strong> 评价「学了也不会用、太复杂」</div>
       </div>
       <div class="ev-item">
-        <div class="ev-src" style="background:#059669;">访谈</div>
-        <div class="ev-txt">5位店主访谈：<strong>3位明确</strong>「提前告诉我考试周要备多少货，愿意付费」</div>
-      </div>
-      <div class="ev-item">
         <div class="ev-src" style="background:#7C3AED;">竞品</div>
         <div class="ev-txt">美团/有赞/微盟均面向通用商家，<strong>无产品</strong>内置校历感知，窗口完全打开</div>
       </div>
@@ -313,7 +310,7 @@ body {
       </div>
       <div class="feat-item">
         <div class="fi" style="background:#EEF2FF;">📅</div>
-        <div><div class="fn">校历感知引擎 <span class="fbadge" style="background:#0B1A4E;color:white;">全网唯一</span></div><div class="fd">自动同步校历，节点驱动营销推荐</div></div>
+        <div><div class="fn">校历感知引擎</div><div class="fd">自动同步校历，节点驱动营销推荐</div></div>
       </div>
       <div class="feat-item">
         <div class="fi" style="background:#FEF2EE;">📣</div>
@@ -449,7 +446,7 @@ body {
       <!-- Step 4 GO -->
       <div class="htl-step">
         <div class="htl-dot-wrap">
-          <div class="htl-dot" style="background:#CC3A06;width:24px;height:24px;font-size:7.5px;letter-spacing:.5px;">GO</div>
+          <div class="htl-dot" style="background:#CC3A06;width:24px;height:24px;font-size:7.5px;letter-spacing:.5px;margin-top:0;">GO</div>
         </div>
         <div class="htl-day" style="color:#CC3A06;">Day 12–14 · Go/No-Go</div>
         <div class="htl-ti">数据复盘<br>输出决策报告</div>
@@ -469,7 +466,6 @@ body {
       <div class="fk"><div class="fk-n">¥2k</div><div class="fk-l">启动预算</div></div>
       <div class="fk"><div class="fk-n">2周</div><div class="fk-l">验证周期</div></div>
       <div style="width:1px;background:#DCDCD6;margin:0 4px;height:20px;"></div>
-      <div class="wall"><span>唯一差异化：校历感知 · 全网无同类垂直产品</span></div>
     </div>
     <div class="foot-r">校边通 · 大学周边小微商家 AI 经营助手 · 2026</div>
   </div>
