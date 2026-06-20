@@ -49,8 +49,8 @@ body {
 .panel { background:white;border:1px solid #E2E2DC;border-radius:4px;padding:8px 10px; display:flex; flex-direction:column; }
 
 /* ROW GRIDS */
-.row-ab { display:grid; grid-template-columns:1.05fr 1fr; gap:7px; flex:1; min-height:0; }
-.row-cd { display:grid; grid-template-columns:1fr 1fr; gap:7px; flex:1; min-height:0; }
+.row-ab { display:grid; grid-template-columns:1.05fr 1fr; gap:7px; flex:0.85; min-height:0; }
+.row-cd { display:grid; grid-template-columns:1fr 1fr; gap:7px; flex:1.15; min-height:0; }
 
 /* PAIN ITEMS */
 .p-item { display:flex;gap:6px;align-items:flex-start;padding:3px 6px;border-left:2.5px solid;border-radius:0 3px 3px 0;background:#F9F9F6;margin-bottom:3px; flex-shrink:0; }
@@ -245,54 +245,6 @@ body {
         <div class="ev-src" style="background:#FF6600;">淘宝</div>
         <div class="ev-txt">购买外卖运营课的店主中 <strong>80%</strong> 评价「学了也不会用、太复杂」</div>
       </div>
-      <div class="ev-item">
-        <div class="ev-src" style="background:#7C3AED;">竞品</div>
-        <div class="ev-txt">美团/有赞/微盟均面向通用商家，<strong>无产品</strong>内置校历感知，窗口完全打开</div>
-      </div>
-      <!-- 利益相关者图，flex:1撑满 -->
-      <div style="margin-top:5px;background:#F9F9F6;border-radius:3px;padding:5px;flex:1;display:flex;flex-direction:column;">
-        <div style="font-size:7px;font-weight:700;letter-spacing:1.5px;color:#0B1A4E;margin-bottom:3px;">利益相关者关系图</div>
-        <svg viewBox="0 0 310 120" style="width:100%;flex:1;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <marker id="b1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#1B3DBF"/></marker>
-            <marker id="b2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#059669"/></marker>
-            <marker id="b3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#8B5CF6"/></marker>
-            <marker id="b4" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#B45309"/></marker>
-            <marker id="b5" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#059669"/></marker>
-            <marker id="b6" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#CC3A06"/></marker>
-          </defs>
-          <ellipse cx="155" cy="60" rx="32" ry="20" fill="#0B1A4E"/>
-          <text x="155" y="57" text-anchor="middle" fill="white" font-size="9.5" font-weight="700" font-family="sans-serif">校边通</text>
-          <text x="155" y="69" text-anchor="middle" fill="#5B7AFF" font-size="8" font-family="sans-serif">AI经营平台</text>
-          <ellipse cx="32" cy="60" rx="27" ry="17" fill="#EEF2FF" stroke="#1B3DBF" stroke-width="1.5"/>
-          <text x="32" y="57" text-anchor="middle" fill="#0B1A4E" font-size="8" font-weight="700" font-family="sans-serif">小微商家</text>
-          <text x="32" y="67" text-anchor="middle" fill="#1B3DBF" font-size="7" font-family="sans-serif">核心付费方</text>
-          <line x1="59" y1="56" x2="123" y2="56" stroke="#1B3DBF" stroke-width="1.5" marker-end="url(#b1)"/>
-          <line x1="123" y1="64" x2="59" y2="64" stroke="#059669" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#b2)"/>
-          <text x="91" y="52" text-anchor="middle" fill="#1B3DBF" font-size="7" font-family="sans-serif">付费+数据</text>
-          <text x="91" y="72" text-anchor="middle" fill="#059669" font-size="7" font-family="sans-serif">AI营销+备货洞察</text>
-          <ellipse cx="155" cy="16" rx="26" ry="13" fill="#F3EEFF" stroke="#8B5CF6" stroke-width="1.2"/>
-          <text x="155" y="13" text-anchor="middle" fill="#0B1A4E" font-size="8" font-weight="700" font-family="sans-serif">学校</text>
-          <text x="155" y="23" text-anchor="middle" fill="#8B5CF6" font-size="7" font-family="sans-serif">校历数据源</text>
-          <line x1="155" y1="29" x2="155" y2="40" stroke="#8B5CF6" stroke-width="1.2" marker-end="url(#b3)"/>
-          <text x="167" y="36" fill="#8B5CF6" font-size="7" font-family="sans-serif">校历API</text>
-          <ellipse cx="278" cy="35" rx="28" ry="15" fill="#FEFCE8" stroke="#B45309" stroke-width="1.2"/>
-          <text x="278" y="32" text-anchor="middle" fill="#0B1A4E" font-size="7.5" font-weight="700" font-family="sans-serif">美团/饿了么</text>
-          <text x="278" y="42" text-anchor="middle" fill="#B45309" font-size="7" font-family="sans-serif">竞争+合作方</text>
-          <line x1="251" y1="41" x2="187" y2="53" stroke="#B45309" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#b4)"/>
-          <text x="224" y="43" text-anchor="middle" fill="#B45309" font-size="7" font-family="sans-serif">评价API</text>
-          <ellipse cx="278" cy="90" rx="26" ry="14" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
-          <text x="278" y="87" text-anchor="middle" fill="#0B1A4E" font-size="7.5" font-weight="700" font-family="sans-serif">天气服务</text>
-          <text x="278" y="97" text-anchor="middle" fill="#059669" font-size="7" font-family="sans-serif">预测数据源</text>
-          <line x1="253" y1="80" x2="188" y2="67" stroke="#059669" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#b5)"/>
-          <text x="226" y="79" text-anchor="middle" fill="#059669" font-size="7" font-family="sans-serif">天气预报API</text>
-          <ellipse cx="155" cy="108" rx="26" ry="12" fill="#FEF2EE" stroke="#CC3A06" stroke-width="1.2"/>
-          <text x="155" y="105" text-anchor="middle" fill="#0B1A4E" font-size="8" font-weight="700" font-family="sans-serif">学生消费者</text>
-          <text x="155" y="115" text-anchor="middle" fill="#CC3A06" font-size="7" font-family="sans-serif">间接受益方</text>
-          <line x1="130" y1="104" x2="55" y2="77" stroke="#CC3A06" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#b6)"/>
-          <text x="84" y="96" text-anchor="middle" fill="#CC3A06" font-size="7" font-family="sans-serif">到店消费</text>
-        </svg>
-      </div>
     </div>
   </div>
 
@@ -302,6 +254,9 @@ body {
     <!-- ③ MVP + Kano -->
     <div class="panel">
       <div class="slabel"><div class="sn">3</div>MVP 样例 · 核心功能 + Kano优先级</div>
+      <div style="background:linear-gradient(135deg,#EEF2FF 0%,#F0F4FF 100%);border-radius:3px;padding:5px 8px;margin-bottom:5px;flex-shrink:0;">
+        <div style="font-size:8px;color:#0B1A4E;line-height:1.5;font-weight:500;"><span style="font-weight:700;color:#1B3DBF;">校边通</span> 是一款面向校园周边小微商家的 AI 经营助手。核心亮点：<span style="font-weight:700;color:#CC3A06;">① 全网唯一「校历感知引擎」</span>——自动同步学校校历，考试周/运动会/寒暑假等节点驱动营销与备货；<span style="font-weight:700;color:#1B3DBF;">② AI 一键生成</span>——营销文案+海报+备货建议，商家复制即用；<span style="font-weight:700;color:#059669;">③ 双因子预测</span>——天气×校历量化备货，告别经验瞎猜。</div>
+      </div>
       <div class="flow-steps">
         <div class="fs">输入<br>校历节点</div><div class="fa">›</div>
         <div class="fs">AI生成<br>营销方案</div><div class="fa">›</div>
@@ -337,27 +292,33 @@ body {
           <line x1="10" y1="5" x2="10" y2="85" stroke="#D1D5DB" stroke-width="1"/>
           <text x="155" y="96" text-anchor="middle" fill="#9CA3AF" font-size="7.5" font-family="sans-serif">功能完善度 →</text>
           <text x="6" y="45" text-anchor="middle" fill="#9CA3AF" font-size="7" font-family="sans-serif" transform="rotate(-90,6,45)">满意度</text>
+          <!-- 基本型曲线（灰色虚线） -->
           <path d="M12,10 Q80,12 155,48 Q220,82 295,87" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <!-- 期望型曲线（蓝色实线） -->
           <path d="M12,85 Q155,48 295,10" fill="none" stroke="#1B3DBF" stroke-width="1.8"/>
+          <!-- 兴奋型曲线（红色虚线） -->
           <path d="M12,85 Q60,83 155,48 Q230,18 295,8" fill="none" stroke="#CC3A06" stroke-width="1.5" stroke-dasharray="5,3"/>
-          <circle cx="130" cy="55" r="4.5" fill="#1B3DBF"/>
-          <rect x="84" y="48" width="40" height="11" rx="2" fill="white" opacity="0.9"/>
-          <text x="104" y="56" text-anchor="middle" fill="#1B3DBF" font-size="7" font-weight="600" font-family="sans-serif">校历事件</text>
-          <circle cx="175" cy="42" r="4.5" fill="#1B3DBF"/>
-          <rect x="130" y="35" width="40" height="11" rx="2" fill="white" opacity="0.9"/>
-          <text x="150" y="43" text-anchor="middle" fill="#1B3DBF" font-size="7" font-weight="600" font-family="sans-serif">文案生成</text>
-          <circle cx="210" cy="32" r="4.5" fill="#1B3DBF"/>
-          <rect x="165" y="25" width="40" height="11" rx="2" fill="white" opacity="0.9"/>
-          <text x="185" y="33" text-anchor="middle" fill="#1B3DBF" font-size="7" font-weight="600" font-family="sans-serif">备货预测</text>
-          <circle cx="248" cy="22" r="4.5" fill="#1B3DBF"/>
-          <rect x="254" y="15" width="36" height="11" rx="2" fill="white" opacity="0.9"/>
-          <text x="272" y="23" text-anchor="middle" fill="#1B3DBF" font-size="7" font-weight="600" font-family="sans-serif">营销ROI</text>
-          <circle cx="265" cy="14" r="5" fill="#CC3A06"/>
-          <rect x="210" y="7" width="48" height="11" rx="2" fill="white" opacity="0.92"/>
-          <text x="234" y="15" text-anchor="middle" fill="#CC3A06" font-size="7.5" font-weight="700" font-family="sans-serif">跨店联动⚡</text>
-          <circle cx="230" cy="26" r="5" fill="#CC3A06"/>
-          <rect x="175" y="19" width="48" height="11" rx="2" fill="white" opacity="0.92"/>
-          <text x="199" y="27" text-anchor="middle" fill="#CC3A06" font-size="7.5" font-weight="700" font-family="sans-serif">差评分析⚡</text>
+          <!-- 基本型：校历事件 — 产品根基，没有它就没有价值主张 -->
+          <circle cx="80" cy="22" r="5" fill="#9CA3AF"/>
+          <rect x="46" y="14" width="56" height="11" rx="2" fill="white" opacity="0.92"/>
+          <text x="74" y="22" text-anchor="middle" fill="#9CA3AF" font-size="7" font-weight="700" font-family="sans-serif">校历事件🔧</text>
+          <!-- 期望型：文案生成 — 质量直接决定满意度 -->
+          <circle cx="175" cy="42" r="5" fill="#1B3DBF"/>
+          <rect x="136" y="34" width="56" height="11" rx="2" fill="white" opacity="0.92"/>
+          <text x="164" y="42" text-anchor="middle" fill="#1B3DBF" font-size="7" font-weight="700" font-family="sans-serif">文案生成📊</text>
+          <!-- 期望型：备货预测 — 准确度直接关联满意度 -->
+          <circle cx="230" cy="28" r="5" fill="#1B3DBF"/>
+          <rect x="191" y="20" width="56" height="11" rx="2" fill="white" opacity="0.92"/>
+          <text x="219" y="28" text-anchor="middle" fill="#1B3DBF" font-size="7" font-weight="700" font-family="sans-serif">备货预测📊</text>
+          <!-- 兴奋型：差评分析 — 用户不预期但用了会惊喜 -->
+          <circle cx="175" cy="18" r="5" fill="#CC3A06"/>
+          <rect x="133" y="9" width="60" height="11" rx="2" fill="white" opacity="0.92"/>
+          <text x="163" y="17" text-anchor="middle" fill="#CC3A06" font-size="7" font-weight="700" font-family="sans-serif">差评分析⚡</text>
+          <!-- 兴奋型：跨店联动 — 高级差异化，创造意外价值 -->
+          <circle cx="260" cy="12" r="5" fill="#CC3A06"/>
+          <rect x="216" y="3" width="60" height="11" rx="2" fill="white" opacity="0.92"/>
+          <text x="246" y="11" text-anchor="middle" fill="#CC3A06" font-size="7" font-weight="700" font-family="sans-serif">跨店联动⚡</text>
+          <!-- 图例 -->
           <line x1="12" y1="101" x2="26" y2="101" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4,2"/>
           <text x="29" y="104" fill="#9CA3AF" font-size="7" font-family="sans-serif">基本型</text>
           <line x1="90" y1="101" x2="104" y2="101" stroke="#1B3DBF" stroke-width="1.5"/>
@@ -407,12 +368,56 @@ body {
       <div class="ch-item"><div class="ch-dot" style="background:#0B1A4E;"></div>校园周边地推扫街（500m）<span class="chip cb">主渠道</span></div>
       <div class="ch-item"><div class="ch-dot" style="background:#CC3A06;"></div>店主群口碑裂变，邀请返现¥20<span class="chip cr">低成本</span></div>
       <div class="ch-item"><div class="ch-dot" style="background:#059669;"></div>平台服务商BD合作<span class="chip cg">规模化</span></div>
-      <!-- 护城河，flex:1撑满 -->
-      <div style="margin-top:auto;padding-top:5px;flex:1;display:flex;flex-direction:column;justify-content:flex-end;">
+      <!-- 护城河 -->
+      <div style="margin-top:auto;padding-top:5px;flex-shrink:0;">
         <div style="background:#A6C5F5;border-radius:3px;padding:7px 10px;">
           <div style="font-size:7.5px;font-weight:700;color:#0B1A4E;margin-bottom:3px;">🔒 护城河：校历数据 + 商家关系网络</div>
           <div style="font-size:8px;color:#0B1A4E;line-height:1.6;">大厂不屑做垂直场景 → 同行难以快速复制 → 越用数据越准 → 越难离开</div>
         </div>
+      </div>
+      <!-- 利益相关者关系图，flex:1撑满 -->
+      <div style="margin-top:5px;background:#F9F9F6;border-radius:3px;padding:5px;flex:1;display:flex;flex-direction:column;">
+        <div style="font-size:7px;font-weight:700;letter-spacing:1.5px;color:#0B1A4E;margin-bottom:3px;">利益相关者关系图</div>
+        <svg viewBox="0 0 310 120" style="width:100%;flex:1;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="b1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#1B3DBF"/></marker>
+            <marker id="b2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#059669"/></marker>
+            <marker id="b3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#8B5CF6"/></marker>
+            <marker id="b4" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#B45309"/></marker>
+            <marker id="b5" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#059669"/></marker>
+            <marker id="b6" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#CC3A06"/></marker>
+          </defs>
+          <ellipse cx="155" cy="60" rx="32" ry="20" fill="#0B1A4E"/>
+          <text x="155" y="57" text-anchor="middle" fill="white" font-size="9.5" font-weight="700" font-family="sans-serif">校边通</text>
+          <text x="155" y="69" text-anchor="middle" fill="#5B7AFF" font-size="8" font-family="sans-serif">AI经营平台</text>
+          <ellipse cx="32" cy="60" rx="27" ry="17" fill="#EEF2FF" stroke="#1B3DBF" stroke-width="1.5"/>
+          <text x="32" y="57" text-anchor="middle" fill="#0B1A4E" font-size="8" font-weight="700" font-family="sans-serif">小微商家</text>
+          <text x="32" y="67" text-anchor="middle" fill="#1B3DBF" font-size="7" font-family="sans-serif">核心付费方</text>
+          <line x1="59" y1="56" x2="123" y2="56" stroke="#1B3DBF" stroke-width="1.5" marker-end="url(#b1)"/>
+          <line x1="123" y1="64" x2="59" y2="64" stroke="#059669" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#b2)"/>
+          <text x="91" y="52" text-anchor="middle" fill="#1B3DBF" font-size="7" font-family="sans-serif">付费+数据</text>
+          <text x="91" y="72" text-anchor="middle" fill="#059669" font-size="7" font-family="sans-serif">AI营销+备货洞察</text>
+          <ellipse cx="155" cy="16" rx="26" ry="13" fill="#F3EEFF" stroke="#8B5CF6" stroke-width="1.2"/>
+          <text x="155" y="13" text-anchor="middle" fill="#0B1A4E" font-size="8" font-weight="700" font-family="sans-serif">学校</text>
+          <text x="155" y="23" text-anchor="middle" fill="#8B5CF6" font-size="7" font-family="sans-serif">校历数据源</text>
+          <line x1="155" y1="29" x2="155" y2="40" stroke="#8B5CF6" stroke-width="1.2" marker-end="url(#b3)"/>
+          <text x="167" y="36" fill="#8B5CF6" font-size="7" font-family="sans-serif">校历API</text>
+          <ellipse cx="278" cy="35" rx="28" ry="15" fill="#FEFCE8" stroke="#B45309" stroke-width="1.2"/>
+          <text x="278" y="32" text-anchor="middle" fill="#0B1A4E" font-size="7.5" font-weight="700" font-family="sans-serif">美团/饿了么</text>
+          <text x="278" y="42" text-anchor="middle" fill="#B45309" font-size="7" font-family="sans-serif">竞争+合作方</text>
+          <line x1="251" y1="41" x2="187" y2="53" stroke="#B45309" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#b4)"/>
+          <text x="224" y="43" text-anchor="middle" fill="#B45309" font-size="7" font-family="sans-serif">评价API</text>
+          <ellipse cx="278" cy="90" rx="26" ry="14" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+          <text x="278" y="87" text-anchor="middle" fill="#0B1A4E" font-size="7.5" font-weight="700" font-family="sans-serif">天气服务</text>
+          <text x="278" y="97" text-anchor="middle" fill="#059669" font-size="7" font-family="sans-serif">预测数据源</text>
+          <line x1="253" y1="80" x2="188" y2="67" stroke="#059669" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#b5)"/>
+          <text x="226" y="79" text-anchor="middle" fill="#059669" font-size="7" font-family="sans-serif">天气预报API</text>
+          <ellipse cx="155" cy="108" rx="26" ry="12" fill="#FEF2EE" stroke="#CC3A06" stroke-width="1.2"/>
+          <text x="155" y="105" text-anchor="middle" fill="#0B1A4E" font-size="8" font-weight="700" font-family="sans-serif">学生消费者</text>
+          <text x="155" y="115" text-anchor="middle" fill="#CC3A06" font-size="7" font-family="sans-serif">间接受益方</text>
+          <line x1="130" y1="104" x2="55" y2="77" stroke="#CC3A06" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#b6)"/>
+          <text x="84" y="96" text-anchor="middle" fill="#CC3A06" font-size="7" font-family="sans-serif">到店消费</text>
+        </svg>
       </div>
     </div>
   </div>
