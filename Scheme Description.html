@@ -49,8 +49,8 @@ body {
 .panel { background:white;border:1px solid #E2E2DC;border-radius:4px;padding:8px 10px; display:flex; flex-direction:column; }
 
 /* ROW GRIDS */
-.row-ab { display:grid; grid-template-columns:1.05fr 1fr; gap:7px; flex:0.85; min-height:0; }
-.row-cd { display:grid; grid-template-columns:1fr 1fr; gap:7px; flex:1.15; min-height:0; }
+.row-ab { display:grid; grid-template-columns:1.05fr 1fr; gap:7px; flex:0.75; min-height:0; }
+.row-cd { display:grid; grid-template-columns:1fr 1fr; gap:7px; flex:1.25; min-height:0; }
 
 /* PAIN ITEMS */
 .p-item { display:flex;gap:6px;align-items:flex-start;padding:3px 6px;border-left:2.5px solid;border-radius:0 3px 3px 0;background:#F9F9F6;margin-bottom:3px; flex-shrink:0; }
@@ -168,60 +168,58 @@ body {
       <div style="font-size:7.5px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:4px;flex-shrink:0;">
         目标：校园周边500m小微餐饮/便利店 · 日营收¥500-3000 · 员工1-3人
       </div>
-      <div class="p-item" style="border-color:#CC3A06;">
-        <div class="p-ico">💸</div>
-        <div><div class="p-t">平台抽成18-23%，做外卖不赚钱</div><div class="p-d">但不做就没有线上流量入口</div></div>
+      <!-- 痛点横向网格：3+2布局 -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:5px;flex-shrink:0;">
+        <div style="background:#FEF2EE;border-radius:3px;padding:4px 5px;border-top:2px solid #CC3A06;">
+          <div style="font-size:10px;margin-bottom:2px;">💸</div>
+          <div style="font-size:8px;font-weight:700;color:#1a1a1a;line-height:1.3;">平台抽成18-23%</div>
+          <div style="font-size:7px;color:#888;line-height:1.3;margin-top:1px;">做外卖不赚钱，但不做没流量</div>
+        </div>
+        <div style="background:#EEF2FF;border-radius:3px;padding:4px 5px;border-top:2px solid #1B3DBF;">
+          <div style="font-size:10px;margin-bottom:2px;">📢</div>
+          <div style="font-size:8px;font-weight:700;color:#1a1a1a;line-height:1.3;">不会营销</div>
+          <div style="font-size:7px;color:#888;line-height:1.3;margin-top:1px;">错过校历节点，高峰流量溜走</div>
+        </div>
+        <div style="background:#FEFCE8;border-radius:3px;padding:4px 5px;border-top:2px solid #F0A500;">
+          <div style="font-size:10px;margin-bottom:2px;">❄️</div>
+          <div style="font-size:8px;font-weight:700;color:#1a1a1a;line-height:1.3;">寒暑假收入近零</div>
+          <div style="font-size:7px;color:#888;line-height:1.3;margin-top:1px;">3-4个月无预案，年年亏损</div>
+        </div>
       </div>
-      <div class="p-item" style="border-color:#1B3DBF;">
-        <div class="p-ico">📢</div>
-        <div><div class="p-t">不会营销，错过校历节点</div><div class="p-d">考试周/运动会高峰流量白白溜走</div></div>
-      </div>
-      <div class="p-item" style="border-color:#F0A500;">
-        <div class="p-ico">❄️</div>
-        <div><div class="p-t">寒暑假收入近零，固定成本压垮</div><div class="p-d">3-4个月无预案，年年重复亏损</div></div>
-      </div>
-      <div class="p-item" style="border-color:#10B981;">
-        <div class="p-ico">📦</div>
-        <div><div class="p-t">备货靠经验瞎猜，缺货/积压</div><div class="p-d">天气×考试×节假日变量无法量化</div></div>
-      </div>
-      <div class="p-item" style="border-color:#8B5CF6;">
-        <div class="p-ico">⭐</div>
-        <div><div class="p-t">差评不会回，评分持续下滑</div><div class="p-d">缺乏高情商应对，影响平台排名</div></div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:4px;margin-bottom:5px;flex-shrink:0;">
+        <div style="background:#ECFDF5;border-radius:3px;padding:4px 5px;border-top:2px solid #10B981;">
+          <div style="font-size:10px;margin-bottom:2px;">📦</div>
+          <div style="font-size:8px;font-weight:700;color:#1a1a1a;line-height:1.3;">备货靠经验瞎猜</div>
+          <div style="font-size:7px;color:#888;line-height:1.3;margin-top:1px;">天气×考试×节假日无法量化</div>
+        </div>
+        <div style="background:#F3EEFF;border-radius:3px;padding:4px 5px;border-top:2px solid #8B5CF6;">
+          <div style="font-size:10px;margin-bottom:2px;">⭐</div>
+          <div style="font-size:8px;font-weight:700;color:#1a1a1a;line-height:1.3;">差评不会回</div>
+          <div style="font-size:7px;color:#888;line-height:1.3;margin-top:1px;">评分持续下滑，影响排名</div>
+        </div>
       </div>
       <!-- 竞品分析，flex:1 撑满剩余空间 -->
-      <div style="flex:1;background:#F9F9F6;border-radius:3px;padding:7px 8px;margin-top:5px;display:flex;flex-direction:column;gap:5px;">
+      <div style="flex:1;background:#F9F9F6;border-radius:3px;padding:7px 8px;display:flex;flex-direction:column;gap:4px;">
         <div style="font-size:7px;font-weight:700;letter-spacing:1.5px;color:#0B1A4E;margin-bottom:1px;">现有竞品对比 · 校边通的差异化窗口</div>
         <!-- 竞品1：美团经营宝 -->
-        <div style="background:white;border-radius:3px;padding:5px 8px;border-left:3px solid #F0A500;display:flex;align-items:flex-start;gap:7px;">
-          <span style="font-size:12px;flex-shrink:0;margin-top:1px;">🟡</span>
-          <div>
-            <div style="font-size:8.5px;font-weight:700;color:#1a1a1a;">美团经营宝</div>
-            <div style="font-size:7.5px;color:#888;line-height:1.5;margin-top:1px;">通用商家工具，数据分析+外卖运营；<span style="color:#CC3A06;font-weight:600;">无校历感知，抽成18-23%利益冲突</span></div>
-          </div>
+        <div style="background:white;border-radius:3px;padding:3px 6px;border-left:3px solid #F0A500;display:flex;align-items:center;gap:5px;">
+          <span style="font-size:10px;flex-shrink:0;">🟡</span>
+          <div style="font-size:7.5px;color:#888;line-height:1.4;"><span style="font-weight:700;color:#1a1a1a;">美团经营宝</span> — 通用工具，<span style="color:#CC3A06;font-weight:600;">无校历感知，抽成利益冲突</span></div>
         </div>
         <!-- 竞品2：客如云 -->
-        <div style="background:white;border-radius:3px;padding:5px 8px;border-left:3px solid #3B82F6;display:flex;align-items:flex-start;gap:7px;">
-          <span style="font-size:12px;flex-shrink:0;margin-top:1px;">🔵</span>
-          <div>
-            <div style="font-size:8.5px;font-weight:700;color:#1a1a1a;">客如云 <span style="font-size:7px;font-weight:400;color:#888;">阿里本地生活旗下</span></div>
-            <div style="font-size:7.5px;color:#888;line-height:1.5;margin-top:1px;">收银+会员管理，面向连锁品牌；<span style="color:#CC3A06;font-weight:600;">单月费用¥500+，小微商家难承受</span></div>
-          </div>
+        <div style="background:white;border-radius:3px;padding:3px 6px;border-left:3px solid #3B82F6;display:flex;align-items:center;gap:5px;">
+          <span style="font-size:10px;flex-shrink:0;">🔵</span>
+          <div style="font-size:7.5px;color:#888;line-height:1.4;"><span style="font-weight:700;color:#1a1a1a;">客如云</span> — 收银+会员，面向连锁；<span style="color:#CC3A06;font-weight:600;">月费¥500+，小微难承受</span></div>
         </div>
         <!-- 竞品3：抖音来客 -->
-        <div style="background:white;border-radius:3px;padding:5px 8px;border-left:3px solid #333;display:flex;align-items:flex-start;gap:7px;">
-          <span style="font-size:12px;flex-shrink:0;margin-top:1px;">⚫</span>
-          <div>
-            <div style="font-size:8.5px;font-weight:700;color:#1a1a1a;">抖音来客 <span style="font-size:7px;font-weight:400;color:#888;">抖音生活服务商家端</span></div>
-            <div style="font-size:7.5px;color:#888;line-height:1.5;margin-top:1px;">内容营销+团购，依赖持续发视频；<span style="color:#CC3A06;font-weight:600;">学习成本高，备货预测完全缺失</span></div>
-          </div>
+        <div style="background:white;border-radius:3px;padding:3px 6px;border-left:3px solid #333;display:flex;align-items:center;gap:5px;">
+          <span style="font-size:10px;flex-shrink:0;">⚫</span>
+          <div style="font-size:7.5px;color:#888;line-height:1.4;"><span style="font-weight:700;color:#1a1a1a;">抖音来客</span> — 内容营销+团购；<span style="color:#CC3A06;font-weight:600;">学习成本高，备货预测缺失</span></div>
         </div>
         <!-- 竞品4：商家现状 -->
-        <div style="background:white;border-radius:3px;padding:5px 8px;border-left:3px solid #9CA3AF;display:flex;align-items:flex-start;gap:7px;">
-          <span style="font-size:12px;flex-shrink:0;margin-top:1px;">📱</span>
-          <div>
-            <div style="font-size:8.5px;font-weight:700;color:#1a1a1a;">商家现状 <span style="font-size:7px;font-weight:400;color:#888;">微信群 + 传单 + 满减</span></div>
-            <div style="font-size:7.5px;color:#888;line-height:1.5;margin-top:1px;">人工操作，无数据沉淀；<span style="color:#059669;font-weight:600;">校边通直接替代，迁移成本极低</span></div>
-          </div>
+        <div style="background:white;border-radius:3px;padding:3px 6px;border-left:3px solid #9CA3AF;display:flex;align-items:center;gap:5px;">
+          <span style="font-size:10px;flex-shrink:0;">📱</span>
+          <div style="font-size:7.5px;color:#888;line-height:1.4;"><span style="font-weight:700;color:#1a1a1a;">商家现状</span> — 微信群+传单；<span style="color:#059669;font-weight:600;">校边通直接替代，迁移成本极低</span></div>
         </div>
         <!-- 结论行 -->
         <div style="background:#EEF2FF;border-radius:3px;padding:4px 8px;font-size:7.5px;color:#1B3DBF;font-weight:600;line-height:1.5;flex-shrink:0;">
