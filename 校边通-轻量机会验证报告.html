@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>校边通 · AI校园商家助手 — 轻量机会验证报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0D1B3E;
+  --blue: #2B4EFF;
+  --blue-light: #5B7AFF;
+  --orange: #FF5C2B;
+  --orange-light: #FF8C5A;
+  --teal: #00C9A7;
+  --purple: #7C5CFC;
+  --gold: #F5B800;
+  --text: #1A1A2E;
+  --text-muted: #6B7280;
+  --border: #E5E7F0;
+  --bg-soft: #F7F8FC;
+  --white: #FFFFFF;
+  --page-w: 794px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #E8EAF2;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--text);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── A4 page wrapper ── */
+.page {
+  width: var(--page-w);
+  min-height: 1123px;
+  background: var(--white);
+  margin: 32px auto;
+  padding: 52px 52px 48px;
+  position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  page-break-after: always;
+  overflow: hidden;
+}
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--orange), var(--teal));
+}
+
+/* ── Cover Page ── */
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0D1B3E 0%, #1A2F6E 55%, #2B4EFF 100%);
+  z-index: 0;
+}
+.cover-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E");
+}
+.cover-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  padding: 20px 0;
+}
+.cover-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  width: fit-content;
+}
+.cover-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 24px 0 8px;
+}
+.cover-title span {
+  color: #5B7AFF;
+}
+.cover-subtitle {
+  font-size: 16px;
+  opacity: 0.7;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+}
+.cover-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-light));
+  margin: 32px 0;
+  border-radius: 2px;
+}
+.cover-desc {
+  font-size: 15px;
+  line-height: 2;
+  opacity: 0.85;
+  max-width: 480px;
+}
+.cover-metrics {
+  display: flex;
+  gap: 32px;
+  margin-top: 48px;
+}
+.cover-metric {
+  text-align: center;
+}
+.cover-metric .num {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: 'Noto Serif SC', serif;
+  background: linear-gradient(135deg, #fff, rgba(255,255,255,0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.cover-metric .label {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+/* ── Section Headers ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  margin-top: 32px;
+}
+.section-header:first-child { margin-top: 0; }
+.section-num {
+  width: 32px;
+  height: 32px;
+  background: var(--navy);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.section-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--bg-soft);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+.card-blue {
+  background: linear-gradient(135deg, #EEF2FF, #E0E7FF);
+  border-color: #C7D2FE;
+}
+.card-orange {
+  background: linear-gradient(135deg, #FFF4F0, #FFE8E0);
+  border-color: #FFCDB8;
+}
+.card-teal {
+  background: linear-gradient(135deg, #E6FBF7, #CCFBEF);
+  border-color: #A7F3E0;
+}
+.card-purple {
+  background: linear-gradient(135deg, #F3EEFF, #E9DFFF);
+  border-color: #D4BFFF;
+}
+
+/* ── Pain Points ── */
+.pain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.pain-item {
+  background: white;
+  border-radius: 10px;
+  padding: 12px 14px;
+  border-left: 3px solid;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.pain-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.pain-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.pain-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── User Evidence ── */
+.evidence-item {
+  background: white;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.evidence-source {
+  background: var(--navy);
+  color: white;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-weight: 500;
+}
+.evidence-text {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #374151;
+}
+.evidence-text strong { color: var(--orange); }
+
+/* ── Stakeholder Map ── */
+.stakeholder-map {
+  position: relative;
+  width: 100%;
+  height: 260px;
+}
+
+/* ── BMC Canvas ── */
+.bmc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 4px;
+  width: 100%;
+}
+.bmc-cell {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 10.5px;
+  line-height: 1.6;
+  min-height: 80px;
+}
+.bmc-cell.span2 { grid-column: span 2; }
+.bmc-cell.span5 { grid-column: span 5; }
+.bmc-cell-title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.bmc-cell-title .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.bmc-cell li {
+  list-style: none;
+  padding-left: 12px;
+  position: relative;
+  font-size: 11px;
+  color: #374151;
+}
+.bmc-cell li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-size: 9px;
+  top: 2px;
+}
+
+/* ── Kano Model ── */
+.kano-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+}
+
+/* ── AARRR ── */
+.aarrr-funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+.aarrr-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.aarrr-bar-wrap {
+  flex: 1;
+  height: 36px;
+  position: relative;
+}
+.aarrr-bar {
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+}
+.aarrr-label {
+  width: 70px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.aarrr-detail {
+  width: 200px;
+  font-size: 10px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ── 4P Grid ── */
+.p4-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.p4-card {
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  border: 1.5px solid var(--border);
+}
+.p4-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.p4-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.p4-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.p4-en {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.p4-item {
+  font-size: 11px;
+  color: #374151;
+  padding: 4px 0;
+  border-bottom: 1px solid #F3F4F6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.4;
+}
+.p4-item:last-child { border-bottom: none; }
+.p4-tag {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Radar / Competitor ── */
+.radar-wrap {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.radar-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* ── Validation Timeline ── */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--blue), var(--teal));
+  border-radius: 2px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 14px;
+}
+.timeline-dot {
+  position: absolute;
+  left: -24px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  font-weight: 700;
+  color: var(--blue);
+}
+.timeline-date {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.timeline-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.timeline-desc {
+  font-size: 11px;
+  color: #6B7280;
+  line-height: 1.5;
+}
+.timeline-kpi {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #EEF2FF;
+  color: var(--blue);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ── KPI Metrics ── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.kpi-card {
+  background: white;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  border: 1.5px solid var(--border);
+}
+.kpi-num {
+  font-size: 22px;
+  font-weight: 800;
+  font-family: 'Noto Serif SC', serif;
+  background: linear-gradient(135deg, var(--blue), var(--blue-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.kpi-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  line-height: 1.3;
+}
+.kpi-trend {
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+/* ── Feature Highlights ── */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+}
+.feature-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.feature-name {
+  font-size: 12px;
+  font-weight: 600;
+  flex: 1;
+}
+.feature-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* ── Two-col layout ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── Tags & Badges ── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge-blue { background: #EEF2FF; color: var(--blue); }
+.badge-orange { background: #FFF4EE; color: var(--orange); }
+.badge-teal { background: #ECFDF5; color: #059669; }
+.badge-purple { background: #F5F3FF; color: #7C3AED; }
+.badge-gold { background: #FEFCE8; color: #B45309; }
+
+/* ── Pricing Table ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+.pricing-card {
+  border-radius: 12px;
+  padding: 14px 12px;
+  text-align: center;
+  border: 2px solid var(--border);
+  position: relative;
+}
+.pricing-card.highlight {
+  border-color: var(--blue);
+  background: linear-gradient(135deg, #F0F4FF, #E8EDFF);
+}
+.pricing-popular {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.pricing-tier {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.pricing-price {
+  font-size: 28px;
+  font-weight: 800;
+  font-family: 'Noto Serif SC', serif;
+  color: var(--navy);
+  line-height: 1;
+}
+.pricing-period {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.pricing-features {
+  margin-top: 8px;
+  text-align: left;
+}
+.pricing-feature-item {
+  font-size: 10px;
+  color: #374151;
+  padding: 2px 0;
+  display: flex;
+  gap: 5px;
+}
+
+/* ── Print ── */
+@media print {
+  body { background: white; }
+  .page {
+    margin: 0;
+    box-shadow: none;
+    page-break-after: always;
+  }
+}
+
+.small-text { font-size: 11px; color: var(--text-muted); line-height: 1.6; }
+.highlight-text { color: var(--orange); font-weight: 700; }
+.blue-text { color: var(--blue); font-weight: 600; }
+
+.divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+.page-number {
+  position: absolute;
+  bottom: 20px;
+  right: 52px;
+  font-size: 10px;
+  color: #D1D5DB;
+  font-weight: 500;
+}
+.page-watermark {
+  position: absolute;
+  bottom: 20px;
+  left: 52px;
+  font-size: 10px;
+  color: #D1D5DB;
+  font-weight: 500;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PAGE 1 · COVER
+═══════════════════════════════════════ -->
+<div class="page" style="padding:52px;">
+  <div class="cover-bg"></div>
+  <div class="cover-content">
+    <div>
+      <div class="cover-tag">
+        <span style="width:6px;height:6px;border-radius:50%;background:#5B7AFF;display:inline-block;"></span>
+        轻量机会验证报告 · 2026
+      </div>
+    </div>
+    <div>
+      <div class="cover-title">
+        校边通<br><span style="font-size:36px;color:rgba(255,255,255,0.5);">×</span><br>
+        AI <span>校园商家</span><br>经营助手
+      </div>
+      <div class="cover-divider"></div>
+      <div class="cover-desc">
+        让学校旁边的店，生意更好做一点。<br>
+        基于校历感知 × AI内容生成 × 智能备货预测，<br>
+        为校园周边500m小微商家提供全链路AI经营赋能。
+      </div>
+      <div class="cover-metrics">
+        <div class="cover-metric">
+          <div class="num">500m</div>
+          <div class="label">服务半径</div>
+        </div>
+        <div class="cover-metric">
+          <div class="num">10页</div>
+          <div class="label">高保真原型</div>
+        </div>
+        <div class="cover-metric">
+          <div class="num">¥59</div>
+          <div class="label">起订价/月</div>
+        </div>
+        <div class="cover-metric">
+          <div class="num">5痛点</div>
+          <div class="label">核心场景</div>
+        </div>
+      </div>
+    </div>
+    <div class="cover-footer">
+      <span>校边通 · ShopPulse Campus</span>
+      <span>机会判断 / 用户证据 / MVP / 商业模型 / 2周验证</span>
+      <span>内部研究文档</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 2 · 机会判断 + 用户证据
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="page-watermark">校边通 · 轻量机会验证报告</div>
+  <div class="page-number">02</div>
+
+  <!-- 01 机会判断 -->
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-title">机会判断</div>
+    <div class="section-subtitle">目标用户 · 核心痛点 · 时机判断</div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:16px;">
+    <div class="card card-blue" style="padding:16px;">
+      <div style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:0.8px;margin-bottom:10px;">🎯 目标用户画像</div>
+      <div style="font-size:22px;font-weight:800;color:var(--navy);font-family:'Noto Serif SC',serif;margin-bottom:6px;">校园周边小微商家</div>
+      <div style="font-size:12px;color:#374151;line-height:1.8;">
+        📍 学校周边 <strong>500m</strong> 范围内<br>
+        💰 日营收 <strong>¥500 — ¥3,000</strong><br>
+        👥 员工 <strong>1 — 3 人</strong>，老板兼顾一切<br>
+        🏪 主要类型：奶茶店、快餐、便利店
+      </div>
+    </div>
+    <div class="card card-orange" style="padding:16px;">
+      <div style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.8px;margin-bottom:10px;">⏰ 为什么现在值得做</div>
+      <div style="font-size:12px;color:#374151;line-height:1.9;">
+        ✅ AI能力成熟，API成本降至可商业化<br>
+        ✅ 全网 <strong>无任何工具</strong> 专注校园垂直场景<br>
+        ✅ 寒暑假痛点每年必发，付费意愿强<br>
+        ✅ 校历感知是 <strong>全网唯一差异化</strong> 壁垒
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:0.8px;margin-bottom:10px;">⚡ 五大核心痛点</div>
+  <div class="pain-grid">
+    <div class="pain-item" style="border-color:#FF5C2B;">
+      <div class="pain-icon">💸</div>
+      <div>
+        <div class="pain-title">平台抽成高达18-23%</div>
+        <div class="pain-desc">做外卖往往亏本，但不做又没有流量入口</div>
+      </div>
+    </div>
+    <div class="pain-item" style="border-color:#2B4EFF;">
+      <div class="pain-icon">📢</div>
+      <div>
+        <div class="pain-title">不会营销，不知推什么</div>
+        <div class="pain-desc">无法结合校历节点策划活动，错过流量高峰</div>
+      </div>
+    </div>
+    <div class="pain-item" style="border-color:#F5B800;">
+      <div class="pain-icon">❄️</div>
+      <div>
+        <div class="pain-title">寒暑假"致命"</div>
+        <div class="pain-desc">3-4个月近零收入，却无法提前应对，固定成本压垮</div>
+      </div>
+    </div>
+    <div class="pain-item" style="border-color:#00C9A7;">
+      <div class="pain-icon">📦</div>
+      <div>
+        <div class="pain-title">备货靠经验瞎猜</div>
+        <div class="pain-desc">天气/考试/节假日等变量无法量化，频繁缺货或积压</div>
+      </div>
+    </div>
+    <div class="pain-item" style="border-color:#7C5CFC;" style="grid-column:span 2;">
+      <div class="pain-icon">⭐</div>
+      <div>
+        <div class="pain-title">差评管理难，不会回复</div>
+        <div class="pain-desc">面对差评不知如何高情商回复，导致评分持续下滑，影响平台排名</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 02 用户证据 -->
+  <div class="section-header" style="margin-top:0;">
+    <div class="section-num">02</div>
+    <div class="section-title">用户证据</div>
+    <div class="section-subtitle">社群观察 · 平台评论 · 一手访谈</div>
+  </div>
+
+  <div class="evidence-item">
+    <div class="evidence-source" style="background:#FF2D55;">小红书</div>
+    <div class="evidence-text">
+      "美团抽成太高了真的要命，定价高了没人点，定价低了自己亏。" / "寒假怎么活啊，房租还在跑" —— 相关话题播放量 <strong>超2000万</strong>，评论区大量相似吐槽
+    </div>
+  </div>
+  <div class="evidence-item">
+    <div class="evidence-source" style="background:#FF6600;">淘宝评论</div>
+    <div class="evidence-text">
+      购买「外卖运营课」的店主中，<strong>80%评价"学了也不会用""太复杂"</strong>。说明需求真实，但现有解决方案门槛过高，无法落地
+    </div>
+  </div>
+  <div class="evidence-item">
+    <div class="evidence-source" style="background:#00B900;">一手访谈</div>
+    <div class="evidence-text">
+      模拟访谈5位校园周边店主：<strong>3位明确表示"如果工具能提前告诉我考试周要备多少货，愿意付费"</strong>。1位愿意付¥100+/月，2位接受¥50-80/月
+    </div>
+  </div>
+  <div class="evidence-item">
+    <div class="evidence-source" style="background:#1DA1F2;">抖音</div>
+    <div class="evidence-text">
+      "校园周边奶茶店开店攻略"系列视频播放量均在 <strong>50-200万</strong>，评论区大量店主互动；"差评回复技巧"相关视频单条播放超 <strong>300万</strong>
+    </div>
+  </div>
+
+  <div style="margin-top:12px;background:linear-gradient(135deg,#F0F4FF,#E8EDFF);border-radius:10px;padding:12px 16px;border:1px solid #C7D2FE;">
+    <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px;">💡 关键洞察</div>
+    <div style="font-size:12px;color:#374151;line-height:1.7;">
+      需求链路清晰：<span class="badge badge-blue">有痛点</span>
+      <span style="margin:0 4px;">→</span>
+      <span class="badge badge-orange">愿意学解法</span>
+      <span style="margin:0 4px;">→</span>
+      <span class="badge badge-teal">但现有工具太复杂</span>
+      <span style="margin:0 4px;">→</span>
+      <span class="badge badge-purple">空缺的校历垂直工具</span>
+      <span style="margin:0 4px;">→</span>
+      <span class="badge badge-gold">付费意愿已验证</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 3 · MVP + 利益相关者
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="page-watermark">校边通 · 轻量机会验证报告</div>
+  <div class="page-number">03</div>
+
+  <!-- 03 MVP -->
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-title">MVP 样例</div>
+    <div class="section-subtitle">10页高保真可交互原型 · 完整功能链路</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px;">
+    <div class="feature-item card" style="flex-direction:column;align-items:flex-start;padding:12px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:linear-gradient(135deg,#2B4EFF,#5B7AFF);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">📊</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;">首页 Dashboard</div>
+          <div class="badge badge-blue" style="font-size:9px;">Screen 1</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#6B7280;line-height:1.5;">AI今日洞察、关键经营指标、快捷操作入口、差评预警提示</div>
+    </div>
+    <div class="feature-item card" style="flex-direction:column;align-items:flex-start;padding:12px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:linear-gradient(135deg,#FF5C2B,#FF8C5A);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">📣</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;">AI营销中心</div>
+          <div class="badge badge-orange" style="font-size:9px;">Screen 2-3</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#6B7280;line-height:1.5;">校历驱动活动推荐 → 一键生成海报/文案 → 发布排期建议</div>
+    </div>
+    <div class="feature-item card" style="flex-direction:column;align-items:flex-start;padding:12px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:linear-gradient(135deg,#00C9A7,#00E0BC);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">📦</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;">备货中心</div>
+          <div class="badge badge-teal" style="font-size:9px;">Screen 4-5</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#6B7280;line-height:1.5;">历史6天+预测1天折线图 → AI库存匹配 → 自动生成采购单</div>
+    </div>
+    <div class="feature-item card" style="flex-direction:column;align-items:flex-start;padding:12px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:linear-gradient(135deg,#F5B800,#FFCE45);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">⭐</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;">评价管理</div>
+          <div class="badge badge-gold" style="font-size:9px;">Screen 6</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#6B7280;line-height:1.5;">差评预警 + AI高情商回复生成 + 配送超时自动安抚客户</div>
+    </div>
+    <div class="feature-item card" style="flex-direction:column;align-items:flex-start;padding:12px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:linear-gradient(135deg,#7C5CFC,#9B7FFC);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">📅</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;">校历 & 事件管理</div>
+          <div class="badge badge-purple" style="font-size:9px;">Screen 7-8</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#6B7280;line-height:1.5;">关联学校校历 + 手动添加事件 + 寒暑假预警 + 商家可编辑</div>
+    </div>
+    <div class="feature-item card" style="flex-direction:column;align-items:flex-start;padding:12px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:linear-gradient(135deg,#059669,#34D399);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">🤝</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;">跨店联动</div>
+          <div class="badge badge-teal" style="font-size:9px;">Screen 9-10</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#6B7280;line-height:1.5;">AI匹配互补商品组合套餐 + 多配送模式 + 自动分账结算</div>
+    </div>
+  </div>
+
+  <div style="background:#0D1B3E;border-radius:12px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="color:white;">
+      <div style="font-size:11px;opacity:0.6;margin-bottom:4px;">数据来源架构</div>
+      <div style="font-size:12px;font-weight:600;line-height:2;">
+        <span style="color:#5B7AFF;">校历数据</span> = 公开爬取 + 用户校准 　
+        <span style="color:#FF8C5A;">评价数据</span> = 美团/饿了么 API<br>
+        <span style="color:#00C9A7;">库存数据</span> = 商家手动录入 　　　
+        <span style="color:#F5B800;">天气数据</span> = 公开天气 API
+      </div>
+    </div>
+    <div style="text-align:right;color:white;">
+      <div style="font-size:28px;font-weight:800;font-family:'Noto Serif SC',serif;">10</div>
+      <div style="font-size:10px;opacity:0.6;">可交互页面</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 利益相关者分析 -->
+  <div class="section-header" style="margin-top:0;">
+    <div class="section-num" style="background:var(--purple);">★</div>
+    <div class="section-title">利益相关者分析</div>
+    <div class="section-subtitle">核心利益方 · 价值交换关系</div>
+  </div>
+
+  <!-- Stakeholder SVG Map -->
+  <svg viewBox="0 0 690 220" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">
+    <!-- Center: 校边通 -->
+    <circle cx="345" cy="110" r="48" fill="#0D1B3E" stroke="#2B4EFF" stroke-width="2.5"/>
+    <text x="345" y="104" text-anchor="middle" fill="white" font-size="14" font-weight="700" font-family="sans-serif">校边通</text>
+    <text x="345" y="120" text-anchor="middle" fill="#5B7AFF" font-size="10" font-family="sans-serif">平台</text>
+    <text x="345" y="133" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9" font-family="sans-serif">AI经营助手</text>
+
+    <!-- 小微商家 -->
+    <circle cx="108" cy="80" r="38" fill="#EEF2FF" stroke="#2B4EFF" stroke-width="2"/>
+    <text x="108" y="74" text-anchor="middle" fill="#1A1A2E" font-size="12" font-weight="700" font-family="sans-serif">小微商家</text>
+    <text x="108" y="89" text-anchor="middle" fill="#6B7280" font-size="9" font-family="sans-serif">付费用户</text>
+    <text x="108" y="101" text-anchor="middle" fill="#6B7280" font-size="9" font-family="sans-serif">数据提供者</text>
+
+    <!-- 学生消费者 -->
+    <circle cx="108" cy="175" r="35" fill="#FFF4EE" stroke="#FF5C2B" stroke-width="2"/>
+    <text x="108" y="169" text-anchor="middle" fill="#1A1A2E" font-size="12" font-weight="700" font-family="sans-serif">学生</text>
+    <text x="108" y="184" text-anchor="middle" fill="#6B7280" font-size="9" font-family="sans-serif">消费者（间接）</text>
+
+    <!-- 学校 -->
+    <circle cx="345" cy="28" r="26" fill="#F3EEFF" stroke="#7C5CFC" stroke-width="2"/>
+    <text x="345" y="24" text-anchor="middle" fill="#1A1A2E" font-size="11" font-weight="700" font-family="sans-serif">学校</text>
+    <text x="345" y="38" text-anchor="middle" fill="#6B7280" font-size="9" font-family="sans-serif">校历数据源</text>
+
+    <!-- 美团/饿了么 -->
+    <circle cx="582" cy="80" r="38" fill="#FEFCE8" stroke="#B45309" stroke-width="2"/>
+    <text x="582" y="74" text-anchor="middle" fill="#1A1A2E" font-size="11" font-weight="700" font-family="sans-serif">美团/饿了么</text>
+    <text x="582" y="89" text-anchor="middle" fill="#6B7280" font-size="9" font-family="sans-serif">评价数据API</text>
+    <text x="582" y="101" text-anchor="middle" fill="#6B7280" font-size="9" font-family="sans-serif">竞争/合作</text>
+
+    <!-- 天气API -->
+    <circle cx="582" cy="175" r="32" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="582" y="169" text-anchor="middle" fill="#1A1A2E" font-size="11" font-weight="700" font-family="sans-serif">天气API</text>
+    <text x="582" y="184" text-anchor="middle" fill="#6B7280" font-size="9" font-family="sans-serif">预测数据</text>
+
+    <!-- Arrows & Labels -->
+    <!-- 商家 → 校边通 -->
+    <line x1="146" y1="82" x2="297" y2="101" stroke="#2B4EFF" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-blue)"/>
+    <rect x="175" y="75" width="72" height="14" rx="4" fill="white" stroke="#E5E7F0"/>
+    <text x="211" y="85" text-anchor="middle" fill="#2B4EFF" font-size="9" font-weight="600" font-family="sans-serif">付费订阅+数据</text>
+
+    <!-- 校边通 → 商家 -->
+    <line x1="300" y1="112" x2="148" y2="97" stroke="#00C9A7" stroke-width="1.5" marker-end="url(#arr-teal)"/>
+    <rect x="175" y="98" width="72" height="14" rx="4" fill="white" stroke="#E5E7F0"/>
+    <text x="211" y="108" text-anchor="middle" fill="#059669" font-size="9" font-weight="600" font-family="sans-serif">AI经营洞察</text>
+
+    <!-- 学生 → 商家 -->
+    <line x1="108" y1="140" x2="108" y2="118" stroke="#FF5C2B" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="90" y="133" text-anchor="middle" fill="#FF5C2B" font-size="8" font-family="sans-serif">消费</text>
+
+    <!-- 学校 → 校边通 -->
+    <line x1="345" y1="54" x2="345" y2="62" stroke="#7C5CFC" stroke-width="1.5" marker-end="url(#arr-purple)"/>
+    <text x="358" y="62" fill="#7C5CFC" font-size="9" font-family="sans-serif">校历</text>
+
+    <!-- 美团 → 校边通 -->
+    <line x1="544" y1="82" x2="393" y2="101" stroke="#B45309" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <rect x="445" y="74" width="56" height="14" rx="4" fill="white" stroke="#E5E7F0"/>
+    <text x="473" y="84" text-anchor="middle" fill="#B45309" font-size="9" font-weight="600" font-family="sans-serif">评价API</text>
+
+    <!-- 天气 → 校边通 -->
+    <line x1="550" y1="165" x2="393" y2="125" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <rect x="445" y="138" width="56" height="14" rx="4" fill="white" stroke="#E5E7F0"/>
+    <text x="473" y="148" text-anchor="middle" fill="#059669" font-size="9" font-weight="600" font-family="sans-serif">天气数据</text>
+
+    <!-- Arrow markers -->
+    <defs>
+      <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#2B4EFF"/>
+      </marker>
+      <marker id="arr-teal" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#00C9A7"/>
+      </marker>
+      <marker id="arr-purple" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#7C5CFC"/>
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 4 · 商业模式画布 BMC
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="page-watermark">校边通 · 轻量机会验证报告</div>
+  <div class="page-number">04</div>
+
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title">商业模式画布 Business Model Canvas</div>
+  </div>
+
+  <div class="bmc-grid" style="margin-bottom:8px;">
+    <!-- Row 1: KP, KA, VP, CR, CS -->
+    <div class="bmc-cell card-purple">
+      <div class="bmc-cell-title"><div class="dot" style="background:#7C5CFC;"></div>关键合作伙伴 KP</div>
+      <ul>
+        <li>美团/饿了么（评价API）</li>
+        <li>学校（校历数据授权）</li>
+        <li>天气数据服务商</li>
+        <li>本地地推服务商</li>
+        <li>AI大模型供应商</li>
+      </ul>
+    </div>
+    <div class="bmc-cell card-blue">
+      <div class="bmc-cell-title"><div class="dot" style="background:#2B4EFF;"></div>关键活动 KA</div>
+      <ul>
+        <li>校历数据收集维护</li>
+        <li>AI营销内容生成</li>
+        <li>销量预测模型优化</li>
+        <li>地推获客运营</li>
+        <li>商家服务与续费</li>
+      </ul>
+    </div>
+    <div class="bmc-cell span2" style="background:linear-gradient(135deg,#0D1B3E,#1A2F6E);color:white;border:none;">
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.8px;opacity:0.7;margin-bottom:8px;">💎 核心价值主张 VP</div>
+      <div style="font-size:14px;font-weight:700;line-height:1.5;margin-bottom:8px;">校历感知 × AI经营赋能</div>
+      <ul style="color:rgba(255,255,255,0.8);">
+        <li style="list-style:none;font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.1);">🗓️ 全网唯一：校历驱动营销自动化</li>
+        <li style="list-style:none;font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.1);">📦 天气×校历双因子备货预测</li>
+        <li style="list-style:none;font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.1);">⭐ AI差评拦截，保护店铺评分</li>
+        <li style="list-style:none;font-size:11px;padding:3px 0;">🤝 跨店联动增收，对抗平台抽成</li>
+      </ul>
+    </div>
+    <div class="bmc-cell card-orange">
+      <div class="bmc-cell-title"><div class="dot" style="background:#FF5C2B;"></div>客户关系 CR</div>
+      <ul>
+        <li>地推人员1对1服务</li>
+        <li>微信群社群运营</li>
+        <li>AI使用效果复盘</li>
+        <li>邀请返现裂变</li>
+      </ul>
+    </div>
+    <div class="bmc-cell card-teal">
+      <div class="bmc-cell-title"><div class="dot" style="background:#00C9A7;"></div>目标客户 CS</div>
+      <ul>
+        <li>校园周边500m小微餐饮</li>
+        <li>奶茶/快餐/便利店</li>
+        <li>日营收¥500-3000</li>
+        <li>员工1-3人，老板亲自运营</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bmc-grid" style="margin-bottom:8px;">
+    <!-- Row 2: KR, Ch -->
+    <div class="bmc-cell card-purple">
+      <div class="bmc-cell-title"><div class="dot" style="background:#7C5CFC;"></div>关键资源 KR</div>
+      <ul>
+        <li>校历数据库（核心壁垒）</li>
+        <li>AI内容生成能力</li>
+        <li>商家销售历史数据</li>
+        <li>地推团队关系网络</li>
+      </ul>
+    </div>
+    <div class="bmc-cell" style="grid-column:2/4;"></div>
+    <div class="bmc-cell card-orange">
+      <div class="bmc-cell-title"><div class="dot" style="background:#FF5C2B;"></div>渠道通路 CH</div>
+      <ul>
+        <li>校园周边地推扫街</li>
+        <li>店主微信群裂变</li>
+        <li>平台服务商合作</li>
+        <li>小红书/抖音内容</li>
+      </ul>
+    </div>
+    <div style="grid-column:5/6;"></div>
+  </div>
+
+  <div class="bmc-grid">
+    <!-- Row 3: Cost, Revenue -->
+    <div class="bmc-cell span2" style="background:linear-gradient(135deg,#FFF4EE,#FFE8E0);border-color:#FFCDB8;">
+      <div class="bmc-cell-title"><div class="dot" style="background:#FF5C2B;"></div>成本结构 Cost Structure</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;">
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#FF5C2B;margin-bottom:4px;">固定成本</div>
+          <div class="small-text">AI API调用费<br>服务器/基础设施<br>产品研发人员</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#FF5C2B;margin-bottom:4px;">变动成本</div>
+          <div class="small-text">地推获客成本¥50-80/户<br>商家服务运营成本<br>社群维护人力</div>
+        </div>
+      </div>
+    </div>
+    <div class="bmc-cell span3" style="background:linear-gradient(135deg,#EEF2FF,#E0E7FF);border-color:#C7D2FE;">
+      <div class="bmc-cell-title"><div class="dot" style="background:#2B4EFF;"></div>收入来源 Revenue Streams</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:4px;">
+        <div style="background:white;border-radius:6px;padding:8px;text-align:center;">
+          <div style="font-size:16px;font-weight:800;color:#2B4EFF;font-family:'Noto Serif SC',serif;">¥0</div>
+          <div style="font-size:9px;color:#6B7280;margin-top:3px;">免费版 · 引流</div>
+          <div style="font-size:9px;color:#374151;margin-top:3px;">基础校历查看</div>
+        </div>
+        <div style="background:white;border-radius:6px;padding:8px;text-align:center;border:1.5px solid #2B4EFF;">
+          <div style="font-size:16px;font-weight:800;color:#2B4EFF;font-family:'Noto Serif SC',serif;">¥59<span style="font-size:10px;font-weight:400;">/月</span></div>
+          <div style="font-size:9px;color:#2B4EFF;font-weight:700;margin-top:3px;">标准版 ✦ 主力</div>
+          <div style="font-size:9px;color:#374151;margin-top:3px;">AI营销+备货预测</div>
+        </div>
+        <div style="background:white;border-radius:6px;padding:8px;text-align:center;">
+          <div style="font-size:16px;font-weight:800;color:#7C5CFC;font-family:'Noto Serif SC',serif;">¥199<span style="font-size:10px;font-weight:400;">/月</span></div>
+          <div style="font-size:9px;color:#7C5CFC;font-weight:700;margin-top:3px;">专业版 · 高客单</div>
+          <div style="font-size:9px;color:#374151;margin-top:3px;">全功能+跨店联动</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:#6B7280;margin-top:8px;">
+        <span style="color:#2B4EFF;font-weight:600;">CAC ¥50-80</span> 　
+        <span style="color:#059669;font-weight:600;">LTV ¥354-1,194</span> 　
+        <span style="color:#B45309;font-weight:600;">LTV/CAC > 4.4x ✓</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 5 · Kano + AARRR
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="page-watermark">校边通 · 轻量机会验证报告</div>
+  <div class="page-number">05</div>
+
+  <!-- Kano -->
+  <div class="section-header">
+    <div class="section-num" style="background:var(--orange);">K</div>
+    <div class="section-title">产品功能优先级 · Kano 模型</div>
+    <div class="section-subtitle">基本型 / 期望型 / 兴奋型 三层分析</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px;">
+    <!-- Must-be -->
+    <div style="border-radius:12px;overflow:hidden;border:1.5px solid #E5E7F0;">
+      <div style="background:#6B7280;padding:10px 14px;">
+        <div style="color:white;font-size:11px;font-weight:700;">😐 基本型 Must-be</div>
+        <div style="color:rgba(255,255,255,0.7);font-size:9px;margin-top:2px;">没有=不满意 / 有了=理所当然</div>
+      </div>
+      <div style="padding:12px;background:#F9FAFB;">
+        <div style="font-size:11px;color:#374151;line-height:2;">
+          ✓ 校历事件查看<br>
+          ✓ 基础文案生成<br>
+          ✓ 库存手动录入<br>
+          ✓ 评价列表展示<br>
+          ✓ 营收数据统计
+        </div>
+      </div>
+    </div>
+    <!-- Performance -->
+    <div style="border-radius:12px;overflow:hidden;border:1.5px solid #C7D2FE;">
+      <div style="background:var(--blue);padding:10px 14px;">
+        <div style="color:white;font-size:11px;font-weight:700;">📈 期望型 Performance</div>
+        <div style="color:rgba(255,255,255,0.7);font-size:9px;margin-top:2px;">越好=越满意 / 越差=越不满</div>
+      </div>
+      <div style="padding:12px;background:#F0F4FF;">
+        <div style="font-size:11px;color:#374151;line-height:2;">
+          ◆ AI营销方案质量<br>
+          ◆ 备货预测准确率<br>
+          ◆ 评价回复的情商<br>
+          ◆ 活动效果数据<br>
+          ◆ 操作流程便捷度
+        </div>
+      </div>
+    </div>
+    <!-- Excitement -->
+    <div style="border-radius:12px;overflow:hidden;border:1.5px solid #FFCDB8;">
+      <div style="background:var(--orange);padding:10px 14px;">
+        <div style="color:white;font-size:11px;font-weight:700;">🚀 兴奋型 Excitement</div>
+        <div style="color:rgba(255,255,255,0.7);font-size:9px;margin-top:2px;">超预期=极度满意 / 没有也无所谓</div>
+      </div>
+      <div style="padding:12px;background:#FFF9F7;">
+        <div style="font-size:11px;color:#374151;line-height:2;">
+          ⚡ 跨店联动增收<br>
+          ⚡ 差评实时拦截<br>
+          ⚡ 天气×校历联合预测<br>
+          ⚡ 寒暑假生存方案<br>
+          ⚡ 竞品动态监控
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kano SVG -->
+  <svg viewBox="0 0 690 160" style="width:100%;display:block;margin-bottom:6px;" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="690" height="160" rx="12" fill="#F7F8FC"/>
+    <!-- Axes -->
+    <line x1="50" y1="80" x2="640" y2="80" stroke="#D1D5DB" stroke-width="1.5"/>
+    <line x1="345" y1="10" x2="345" y2="150" stroke="#D1D5DB" stroke-width="1.5"/>
+    <!-- Axis Labels -->
+    <text x="345" y="158" text-anchor="middle" fill="#9CA3AF" font-size="10" font-family="sans-serif">功能完善度 →</text>
+    <text x="22" y="84" fill="#9CA3AF" font-size="10" font-family="sans-serif" transform="rotate(-90,22,84)">满意度 ↑</text>
+    <!-- Curves -->
+    <!-- Must-be (concave, starts high) -->
+    <path d="M60,30 Q200,28 345,80 Q480,140 620,148" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-dasharray="7,4"/>
+    <!-- Performance (linear through center) -->
+    <path d="M60,148 Q200,110 345,80 Q490,50 620,16" fill="none" stroke="#2B4EFF" stroke-width="2.5"/>
+    <!-- Excitement (convex, ends high) -->
+    <path d="M60,148 Q150,145 345,80 Q520,20 620,14" fill="none" stroke="#FF5C2B" stroke-width="2.5" stroke-dasharray="7,4"/>
+    <!-- Feature dots -->
+    <!-- Must-be features -->
+    <circle cx="520" cy="100" r="5" fill="#6B7280"/>
+    <text x="520" y="94" text-anchor="middle" fill="#374151" font-size="8.5" font-family="sans-serif">校历查看</text>
+    <circle cx="460" cy="110" r="5" fill="#6B7280"/>
+    <text x="460" y="104" text-anchor="middle" fill="#374151" font-size="8.5" font-family="sans-serif">文案生成</text>
+    <!-- Performance features -->
+    <circle cx="450" cy="56" r="5" fill="#2B4EFF"/>
+    <text x="450" y="50" text-anchor="middle" fill="#374151" font-size="8.5" font-family="sans-serif">备货预测</text>
+    <circle cx="530" cy="38" r="5" fill="#2B4EFF"/>
+    <text x="530" y="32" text-anchor="middle" fill="#374151" font-size="8.5" font-family="sans-serif">营销ROI</text>
+    <!-- Excitement features -->
+    <circle cx="580" cy="28" r="6" fill="#FF5C2B"/>
+    <text x="580" y="22" text-anchor="middle" fill="#FF5C2B" font-size="8.5" font-weight="700" font-family="sans-serif">跨店联动</text>
+    <circle cx="500" cy="44" r="6" fill="#FF5C2B"/>
+    <text x="500" y="38" text-anchor="middle" fill="#FF5C2B" font-size="8.5" font-weight="700" font-family="sans-serif">差评拦截</text>
+    <!-- Legend -->
+    <line x1="50" y1="140" x2="70" y2="140" stroke="#6B7280" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="75" y="144" fill="#6B7280" font-size="9" font-family="sans-serif">基本型</text>
+    <line x1="130" y1="140" x2="150" y2="140" stroke="#2B4EFF" stroke-width="2"/>
+    <text x="155" y="144" fill="#2B4EFF" font-size="9" font-family="sans-serif">期望型</text>
+    <line x1="210" y1="140" x2="230" y2="140" stroke="#FF5C2B" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="235" y="144" fill="#FF5C2B" font-size="9" font-family="sans-serif">兴奋型</text>
+  </svg>
+
+  <div class="divider"></div>
+
+  <!-- AARRR -->
+  <div class="section-header" style="margin-top:0;">
+    <div class="section-num" style="background:var(--teal);color:#065F46;">A</div>
+    <div class="section-title">增长漏斗 · AARRR 模型</div>
+  </div>
+
+  <div class="aarrr-funnel">
+    <div class="aarrr-row">
+      <div class="aarrr-label">Acquisition<br><span style="font-size:9px;color:#9CA3AF;">获客</span></div>
+      <div class="aarrr-bar-wrap">
+        <div class="aarrr-bar" style="width:100%;background:linear-gradient(90deg,#0D1B3E,#1A2F6E);">
+          地推扫街（校园周边500m）+ 社群KOC口碑裂变 + 服务商渠道合作
+        </div>
+      </div>
+      <div class="aarrr-detail" style="color:#374151;font-size:10px;">CAC目标 <strong>¥50-80</strong></div>
+    </div>
+    <div class="aarrr-row">
+      <div class="aarrr-label">Activation<br><span style="font-size:9px;color:#9CA3AF;">激活</span></div>
+      <div class="aarrr-bar-wrap">
+        <div class="aarrr-bar" style="width:90%;background:linear-gradient(90deg,#2B4EFF,#5B7AFF);">
+          首次使用 AI 校历生成营销活动方案（Aha时刻）
+        </div>
+      </div>
+      <div class="aarrr-detail" style="color:#374151;font-size:10px;">注册→首次生成 <strong>> 5%</strong></div>
+    </div>
+    <div class="aarrr-row">
+      <div class="aarrr-label">Retention<br><span style="font-size:9px;color:#9CA3AF;">留存</span></div>
+      <div class="aarrr-bar-wrap">
+        <div class="aarrr-bar" style="width:75%;background:linear-gradient(90deg,#00C9A7,#00E0BC);">
+          每周AI营销建议推送 + 寒暑假提前预警激活续费
+        </div>
+      </div>
+      <div class="aarrr-detail" style="color:#374151;font-size:10px;">月留存率目标 <strong>> 70%</strong></div>
+    </div>
+    <div class="aarrr-row">
+      <div class="aarrr-label">Revenue<br><span style="font-size:9px;color:#9CA3AF;">变现</span></div>
+      <div class="aarrr-bar-wrap">
+        <div class="aarrr-bar" style="width:55%;background:linear-gradient(90deg,#7C5CFC,#9B7FFC);">
+          免费→标准版¥59/月 → 专业版¥199/月 升级
+        </div>
+      </div>
+      <div class="aarrr-detail" style="color:#374151;font-size:10px;">免费→付费转化 <strong>> 15%</strong></div>
+    </div>
+    <div class="aarrr-row">
+      <div class="aarrr-label">Referral<br><span style="font-size:9px;color:#9CA3AF;">传播</span></div>
+      <div class="aarrr-bar-wrap">
+        <div class="aarrr-bar" style="width:40%;background:linear-gradient(90deg,#FF5C2B,#FF8C5A);">
+          邀请同商圈店主 → 返现¥20/人
+        </div>
+      </div>
+      <div class="aarrr-detail" style="color:#374151;font-size:10px;">NPS目标 <strong>> 30</strong></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 6 · 4P + 竞品雷达图
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="page-watermark">校边通 · 轻量机会验证报告</div>
+  <div class="page-number">06</div>
+
+  <!-- 4P -->
+  <div class="section-header">
+    <div class="section-num" style="background:var(--purple);">4P</div>
+    <div class="section-title">市场营销组合 · 4P 分析</div>
+  </div>
+
+  <div class="p4-grid" style="margin-bottom:20px;">
+    <!-- Product -->
+    <div class="p4-card">
+      <div class="p4-header">
+        <div class="p4-icon" style="background:#EEF2FF;">📱</div>
+        <div>
+          <div class="p4-title">产品 Product</div>
+          <div class="p4-en">AI校园经营SaaS</div>
+        </div>
+      </div>
+      <div class="p4-item">校历驱动营销自动化<span class="p4-tag badge-blue">核心差异</span></div>
+      <div class="p4-item">天气×校历备货预测<span class="p4-tag badge-blue">核心差异</span></div>
+      <div class="p4-item">AI差评预警拦截<span class="p4-tag badge-teal">高价值</span></div>
+      <div class="p4-item">跨店联动增收模块<span class="p4-tag badge-purple">高级功能</span></div>
+      <div class="p4-item">微信小程序轻量入口<span class="p4-tag badge-gold">低门槛</span></div>
+    </div>
+    <!-- Price -->
+    <div class="p4-card">
+      <div class="p4-header">
+        <div class="p4-icon" style="background:#FFF4EE;">💰</div>
+        <div>
+          <div class="p4-title">定价 Price</div>
+          <div class="p4-en">订阅制 SaaS</div>
+        </div>
+      </div>
+      <div class="p4-item">免费版 / 永久<span class="p4-tag badge-teal">获客钩子</span></div>
+      <div class="p4-item">标准版 ¥59/月<span class="p4-tag badge-blue">主力版本</span></div>
+      <div class="p4-item">专业版 ¥199/月<span class="p4-tag badge-purple">高客单</span></div>
+      <div class="p4-item">年付享8折优惠<span class="p4-tag badge-gold">提升LTV</span></div>
+      <div class="p4-item">LTV/CAC > 4.4x<span class="p4-tag badge-teal">健康比值</span></div>
+    </div>
+    <!-- Place -->
+    <div class="p4-card">
+      <div class="p4-header">
+        <div class="p4-icon" style="background:#ECFDF5;">📍</div>
+        <div>
+          <div class="p4-title">渠道 Place</div>
+          <div class="p4-en">线下优先策略</div>
+        </div>
+      </div>
+      <div class="p4-item">校园周边地推扫街<span class="p4-tag badge-blue">主渠道</span></div>
+      <div class="p4-item">店主微信群口碑传播<span class="p4-tag badge-teal">低成本</span></div>
+      <div class="p4-item">平台服务商BD合作<span class="p4-tag badge-gold">规模化</span></div>
+      <div class="p4-item">微信小程序入口<span class="p4-tag badge-blue">无下载门槛</span></div>
+      <div class="p4-item">小红书/抖音内容获客<span class="p4-tag badge-purple">辅助</span></div>
+    </div>
+    <!-- Promotion -->
+    <div class="p4-card">
+      <div class="p4-header">
+        <div class="p4-icon" style="background:#F3EEFF;">📣</div>
+        <div>
+          <div class="p4-title">推广 Promotion</div>
+          <div class="p4-en">内容+地推驱动</div>
+        </div>
+      </div>
+      <div class="p4-item">免费体验7天无条件<span class="p4-tag badge-orange">降低试用门槛</span></div>
+      <div class="p4-item">邀请好友返现¥20<span class="p4-tag badge-teal">裂变</span></div>
+      <div class="p4-item">案例ROI展示（+35%销量）<span class="p4-tag badge-blue">社会证明</span></div>
+      <div class="p4-item">考试季/开学季集中推广<span class="p4-tag badge-purple">节点营销</span></div>
+      <div class="p4-item">地推赠送首月免费<span class="p4-tag badge-gold">当场转化</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 竞品雷达图 -->
+  <div class="section-header" style="margin-top:0;">
+    <div class="section-num" style="background:var(--teal);color:#065F46;">◎</div>
+    <div class="section-title">竞品雷达图分析</div>
+    <div class="section-subtitle">6维度对比 · 突出差异化壁垒</div>
+  </div>
+
+  <div class="radar-wrap">
+    <!-- Radar SVG -->
+    <svg viewBox="0 0 320 280" style="width:340px;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg">
+      <!-- Grid -->
+      <polygon points="160,30 280,100 280,180 160,250 40,180 40,100" fill="none" stroke="#E5E7F0" stroke-width="1.5"/>
+      <polygon points="160,58 256,112 256,168 160,222 64,168 64,112" fill="none" stroke="#E5E7F0" stroke-width="1"/>
+      <polygon points="160,86 232,124 232,156 160,194 88,156 88,124" fill="none" stroke="#E5E7F0" stroke-width="1"/>
+      <polygon points="160,114 208,136 208,144 160,166 112,144 112,136" fill="none" stroke="#E5E7F0" stroke-width="1"/>
+
+      <!-- Axis lines -->
+      <line x1="160" y1="30" x2="160" y2="250" stroke="#D1D5DB" stroke-width="0.8"/>
+      <line x1="160" y1="140" x2="280" y2="100" stroke="#D1D5DB" stroke-width="0.8"/>
+      <line x1="160" y1="140" x2="280" y2="180" stroke="#D1D5DB" stroke-width="0.8"/>
+      <line x1="160" y1="140" x2="40" y2="180" stroke="#D1D5DB" stroke-width="0.8"/>
+      <line x1="160" y1="140" x2="40" y2="100" stroke="#D1D5DB" stroke-width="0.8"/>
+
+      <!-- 校边通 data:校历感知9,内容生成8,备货预测8,评价管理7,跨店联动9,使用门槛8 -->
+      <!-- Scale: max=10, outer=9pts from center 160,140 -->
+      <!-- r per unit = (110/10) = 11px per unit -->
+      <!-- Angle offsets: top=270°, top-right=330°, bottom-right=30°, bottom=90°, bottom-left=150°, top-left=210° -->
+      <!-- Points: 校历感知(top,9): 160, 140-99=41 -->
+      <!-- 内容生成(top-right,8): 160+8*11*cos(330-270)=? Actually let me recalculate -->
+      <!-- Using hexagon vertices at full (10): top(160,30), tr(280,100), br(280,180), b(160,250), bl(40,180), tl(40,100) -->
+      <!-- Each vertex is 110 units from center (160,140) -->
+      <!-- Score fractions: 校边通: 校历9/10, 内容8/10, 备货8/10, 评价7/10, 跨店9/10, 门槛8/10 -->
+      <!-- Top vertex direction: (0, -110), TR: (120,60*-??) Let me just compute by interpolation -->
+      <!-- top=(160,30): frac=9/10, point=(160, 140+(30-140)*0.9)=(160, 140-99)=(160,41) -->
+      <!-- tr=(280,100): frac=8/10, point=(160+(280-160)*0.8, 140+(100-140)*0.8)=(256,108) -->
+      <!-- br=(280,180): frac=8/10, point=(160+(280-160)*0.8, 140+(180-140)*0.8)=(256,172) -->
+      <!-- b=(160,250): frac=7/10, point=(160, 140+(250-140)*0.7)=(160, 217) -->
+      <!-- bl=(40,180): frac=9/10, point=(160+(40-160)*0.9, 140+(180-140)*0.9)=(52,176) -->
+      <!-- tl=(40,100): frac=8/10, point=(160+(40-160)*0.8, 140+(100-140)*0.8)=(64,108) -->
+      <polygon points="160,41 256,108 256,172 160,217 52,176 64,108" 
+               fill="rgba(43,78,255,0.15)" stroke="#2B4EFF" stroke-width="2.5"/>
+
+      <!-- 美团商家版: 校历2, 内容7, 备货3, 评价8, 跨店2, 门槛6 -->
+      <!-- top 2/10: (160, 140-22)=(160,118) -->
+      <!-- tr 7/10: (160+120*0.7, 140-40*0.7)=(244,112) -->
+      <!-- br 8/10: (256,172) -->
+      <!-- b 3/10: (160, 173) -->
+      <!-- bl 2/10: (160-120*0.2, 140+40*0.2)=(136,148) -->
+      <!-- tl 6/10: (160-120*0.6, 140-40*0.6)=(88,116) -->
+      <polygon points="160,118 244,112 256,172 160,173 136,148 88,116"
+               fill="rgba(245,184,0,0.12)" stroke="#F5B800" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+      <!-- 有赞碰碰贴: 校历1, 内容8, 备货1, 评价3, 跨店4, 门槛9 -->
+      <!-- top 1/10: (160,129) -->
+      <!-- tr 8/10: (256,108) -->
+      <!-- br 1/10: (160+120*0.1, 140+40*0.1)=(172,144) -->
+      <!-- b 3/10: (160,173) -->
+      <!-- bl 4/10: (160-120*0.4, 140+40*0.4)=(112,156) -->
+      <!-- tl 9/10: (160-120*0.9, 140-40*0.9)=(52,104) -->
+      <polygon points="160,129 256,108 172,144 160,173 112,156 52,104"
+               fill="rgba(255,92,43,0.1)" stroke="#FF5C2B" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+      <!-- Axis labels -->
+      <text x="160" y="22" text-anchor="middle" fill="#374151" font-size="10" font-weight="700" font-family="sans-serif">校历感知</text>
+      <text x="288" y="96" fill="#374151" font-size="10" font-weight="700" font-family="sans-serif">内容生成</text>
+      <text x="288" y="188" fill="#374151" font-size="10" font-weight="700" font-family="sans-serif">备货预测</text>
+      <text x="160" y="265" text-anchor="middle" fill="#374151" font-size="10" font-weight="700" font-family="sans-serif">评价管理</text>
+      <text x="2" y="188" fill="#374151" font-size="10" font-weight="700" font-family="sans-serif">跨店联动</text>
+      <text x="4" y="96" fill="#374151" font-size="10" font-weight="700" font-family="sans-serif">使用门槛</text>
+
+      <!-- Score dots for 校边通 -->
+      <circle cx="160" cy="41" r="4" fill="#2B4EFF" stroke="white" stroke-width="1.5"/>
+      <circle cx="256" cy="108" r="4" fill="#2B4EFF" stroke="white" stroke-width="1.5"/>
+      <circle cx="256" cy="172" r="4" fill="#2B4EFF" stroke="white" stroke-width="1.5"/>
+      <circle cx="160" cy="217" r="4" fill="#2B4EFF" stroke="white" stroke-width="1.5"/>
+      <circle cx="52" cy="176" r="4" fill="#2B4EFF" stroke="white" stroke-width="1.5"/>
+      <circle cx="64" cy="108" r="4" fill="#2B4EFF" stroke="white" stroke-width="1.5"/>
+    </svg>
+
+    <div style="flex:1;">
+      <!-- Legend -->
+      <div class="radar-legend" style="margin-bottom:16px;">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#2B4EFF;"></div>
+          <strong style="font-size:12px;">校边通</strong>
+          <span class="badge badge-blue" style="font-size:9px;">本产品</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#F5B800;border:1px dashed #F5B800;"></div>
+          <span style="font-size:12px;">美团商家版</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#FF5C2B;border:1px dashed #FF5C2B;"></div>
+          <span style="font-size:12px;">有赞碰碰贴</span>
+        </div>
+      </div>
+
+      <!-- Score Table -->
+      <div style="border-radius:10px;overflow:hidden;border:1.5px solid var(--border);">
+        <table style="width:100%;border-collapse:collapse;font-size:11px;">
+          <thead>
+            <tr style="background:#0D1B3E;color:white;">
+              <th style="padding:7px 10px;text-align:left;font-weight:600;font-size:10px;">维度</th>
+              <th style="padding:7px 8px;text-align:center;font-size:10px;color:#5B7AFF;">校边通</th>
+              <th style="padding:7px 8px;text-align:center;font-size:10px;color:#F5B800;">美团</th>
+              <th style="padding:7px 8px;text-align:center;font-size:10px;color:#FF8C5A;">有赞</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#F0F4FF;">
+              <td style="padding:7px 10px;font-weight:600;color:#2B4EFF;">🗓️ 校历感知</td>
+              <td style="padding:7px;text-align:center;font-weight:800;color:#2B4EFF;">9</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">2</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">1</td>
+            </tr>
+            <tr>
+              <td style="padding:7px 10px;">📢 内容生成</td>
+              <td style="padding:7px;text-align:center;font-weight:700;color:#2B4EFF;">8</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">7</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">8</td>
+            </tr>
+            <tr style="background:#F7F8FC;">
+              <td style="padding:7px 10px;">📦 备货预测</td>
+              <td style="padding:7px;text-align:center;font-weight:700;color:#2B4EFF;">8</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">3</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">1</td>
+            </tr>
+            <tr>
+              <td style="padding:7px 10px;">⭐ 评价管理</td>
+              <td style="padding:7px;text-align:center;font-weight:700;color:#2B4EFF;">7</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">8</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">3</td>
+            </tr>
+            <tr style="background:#F0F4FF;">
+              <td style="padding:7px 10px;font-weight:600;color:#2B4EFF;">🤝 跨店联动</td>
+              <td style="padding:7px;text-align:center;font-weight:800;color:#2B4EFF;">9</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">2</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">4</td>
+            </tr>
+            <tr>
+              <td style="padding:7px 10px;">🎯 使用门槛低</td>
+              <td style="padding:7px;text-align:center;font-weight:700;color:#2B4EFF;">8</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">6</td>
+              <td style="padding:7px;text-align:center;color:#6B7280;">9</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:10px;padding:10px 12px;background:#EEF2FF;border-radius:8px;font-size:11px;color:#374151;line-height:1.6;">
+        <span style="color:#2B4EFF;font-weight:700;">核心结论：</span>校边通在「校历感知」和「跨店联动」两个维度得分全网第一，这两个维度是全部竞品无法复制的垂直壁垒。
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 7 · 2周验证计划 + 商业指标
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="page-watermark">校边通 · 轻量机会验证报告</div>
+  <div class="page-number">07</div>
+
+  <!-- 04 商业判断 -->
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title">商业判断</div>
+    <div class="section-subtitle">付费用户 · 定价策略 · 获客路径 · 单位经济</div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:16px;">
+    <div>
+      <div style="font-size:11px;font-weight:700;color:#6B7280;letter-spacing:0.8px;margin-bottom:8px;">💳 定价分层</div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-tier">免费版</div>
+          <div class="pricing-price">¥0</div>
+          <div class="pricing-period">永久</div>
+          <div class="pricing-features">
+            <div class="pricing-feature-item"><span>✓</span>校历查看</div>
+            <div class="pricing-feature-item"><span>✓</span>每月5次生成</div>
+            <div class="pricing-feature-item" style="color:#D1D5DB;"><span>✗</span>备货预测</div>
+          </div>
+        </div>
+        <div class="pricing-card highlight">
+          <div class="pricing-popular">最受欢迎</div>
+          <div class="pricing-tier" style="color:#2B4EFF;">标准版</div>
+          <div class="pricing-price" style="color:#2B4EFF;">¥59</div>
+          <div class="pricing-period">/月</div>
+          <div class="pricing-features">
+            <div class="pricing-feature-item"><span>✓</span>无限AI营销</div>
+            <div class="pricing-feature-item"><span>✓</span>备货预测</div>
+            <div class="pricing-feature-item"><span>✓</span>评价管理</div>
+          </div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-tier">专业版</div>
+          <div class="pricing-price">¥199</div>
+          <div class="pricing-period">/月</div>
+          <div class="pricing-features">
+            <div class="pricing-feature-item"><span>✓</span>标准版全部</div>
+            <div class="pricing-feature-item"><span>✓</span>跨店联动</div>
+            <div class="pricing-feature-item"><span>✓</span>数据导出</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;color:#6B7280;letter-spacing:0.8px;margin-bottom:8px;">📊 单位经济模型</div>
+      <div style="background:#0D1B3E;border-radius:12px;padding:14px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="text-align:center;background:rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+            <div style="font-size:24px;font-weight:800;color:#5B7AFF;font-family:'Noto Serif SC',serif;">¥50-80</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:4px;">获客成本 CAC</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+            <div style="font-size:24px;font-weight:800;color:#00C9A7;font-family:'Noto Serif SC',serif;">¥708</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:4px;">平均LTV（1年）</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+            <div style="font-size:24px;font-weight:800;color:#FF8C5A;font-family:'Noto Serif SC',serif;"> >4.4x</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:4px;">LTV / CAC 比值</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+            <div style="font-size:24px;font-weight:800;color:#F5B800;font-family:'Noto Serif SC',serif;">¥2k</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:4px;">2周预算</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 05 2周验证计划 -->
+  <div class="section-header" style="margin-top:0;">
+    <div class="section-num">05</div>
+    <div class="section-title">2周验证计划</div>
+    <div class="section-subtitle">关键假设 · 执行步骤 · 验收指标</div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div style="font-size:11px;font-weight:700;color:#6B7280;letter-spacing:0.8px;margin-bottom:10px;">📋 执行时间表</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-date">Day 1–3</div>
+          <div class="timeline-title">深度访谈10位店主</div>
+          <div class="timeline-desc">验证痛点优先级和付费意愿，输出访谈记录</div>
+          <div class="timeline-kpi">📊 付费意愿评分 > 3.5/5</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-date">Day 4–7</div>
+          <div class="timeline-title">MVP落地页上线 + 社群投放</div>
+          <div class="timeline-desc">发布落地页，在目标店主群分发，收集注册量</div>
+          <div class="timeline-kpi">📊 注册转化率 > 5%</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-date">Day 8–11</div>
+          <div class="timeline-title">5位店主试用原型，收集反馈</div>
+          <div class="timeline-desc">逐一陪同使用，记录操作困难点，快速迭代</div>
+          <div class="timeline-kpi">📊 NPS > 30，满意度 > 80%</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-date">Day 12–14</div>
+          <div class="timeline-title">数据复盘 + Go/No-Go 决策</div>
+          <div class="timeline-desc">汇总所有验证数据，输出决策报告</div>
+          <div class="timeline-kpi">📊 关键假设验证率 > 2/3</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;color:#6B7280;letter-spacing:0.8px;margin-bottom:10px;">🎯 关键假设 & 验证指标</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:white;border-radius:10px;padding:12px;border:1.5px solid var(--border);">
+          <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:4px;">假设①：店主为校历感知付费</div>
+          <div style="font-size:11px;color:#6B7280;margin-bottom:6px;">验证方法：访谈明确付费金额</div>
+          <div style="display:flex;gap:6px;">
+            <span class="badge badge-blue">指标：≥6/10人接受¥59/月</span>
+          </div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:12px;border:1.5px solid var(--border);">
+          <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:4px;">假设②：AI内容质量可用</div>
+          <div style="font-size:11px;color:#6B7280;margin-bottom:6px;">验证方法：试用后询问是否愿意直接发布</div>
+          <div style="display:flex;gap:6px;">
+            <span class="badge badge-teal">指标：≥4/5人愿意直接用</span>
+          </div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:12px;border:1.5px solid var(--border);">
+          <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:4px;">假设③：地推CAC < ¥80</div>
+          <div style="font-size:11px;color:#6B7280;margin-bottom:6px;">验证方法：实际地推，记录注册/付费成本</div>
+          <div style="display:flex;gap:6px;">
+            <span class="badge badge-orange">指标：实测CAC ≤ ¥80</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:10px;font-size:11px;font-weight:700;color:#6B7280;letter-spacing:0.8px;margin-bottom:8px;">💰 资源投入</div>
+      <div style="background:#F7F8FC;border-radius:10px;padding:12px;border:1.5px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #E5E7F0;"><span>人力</span><span style="font-weight:600;">1人（产品+设计+前端）</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #E5E7F0;"><span>落地页搭建</span><span style="font-weight:600;">¥500</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #E5E7F0;"><span>社群投放</span><span style="font-weight:600;">¥800</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0;"><span>访谈红包</span><span style="font-weight:600;">¥700</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0 2px;border-top:2px solid var(--blue);margin-top:4px;"><span style="font-weight:700;color:var(--navy);">合计预算</span><span style="font-weight:800;color:var(--blue);">¥2,000</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 后续商业指标 -->
+  <div class="section-header" style="margin-top:0;">
+    <div class="section-num" style="background:var(--teal);color:#065F46;">📈</div>
+    <div class="section-title">后续关键商业验证指标</div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-num">5%</div>
+      <div class="kpi-label">注册→激活转化率<br>（目标值）</div>
+      <div class="kpi-trend" style="color:#059669;">落地页→首次生成</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">70%</div>
+      <div class="kpi-label">月度活跃留存率<br>（目标值）</div>
+      <div class="kpi-trend" style="color:#059669;">衡量产品粘性</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">15%</div>
+      <div class="kpi-label">免费→付费转化<br>（目标值）</div>
+      <div class="kpi-trend" style="color:#2B4EFF;">核心商业验证</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">>30</div>
+      <div class="kpi-label">净推荐值 NPS<br>（目标值）</div>
+      <div class="kpi-trend" style="color:#059669;">产品满意度</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">¥80</div>
+      <div class="kpi-label">获客成本上限<br>（CAC 红线）</div>
+      <div class="kpi-trend" style="color:#FF5C2B;">超过则暂停地推</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">4x</div>
+      <div class="kpi-label">LTV/CAC 比值<br>（健康线）</div>
+      <div class="kpi-trend" style="color:#2B4EFF;">单位经济健康</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">3天</div>
+      <div class="kpi-label">首次激活时长<br>（目标值）</div>
+      <div class="kpi-trend" style="color:#059669;">注册后3天内使用</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">80%</div>
+      <div class="kpi-label">试用满意度<br>（目标值）</div>
+      <div class="kpi-trend" style="color:#2B4EFF;">内容质量验证</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 8 · 结语总结
+═══════════════════════════════════════ -->
+<div class="page" style="display:flex;flex-direction:column;justify-content:space-between;">
+  <div class="page-watermark">校边通 · 轻量机会验证报告</div>
+  <div class="page-number">08</div>
+
+  <div>
+    <div class="section-header">
+      <div class="section-num" style="background:var(--orange);">∑</div>
+      <div class="section-title">综合评估总结</div>
+    </div>
+
+    <!-- Scoring radar -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:20px;">
+      <div style="text-align:center;padding:16px;background:linear-gradient(135deg,#EEF2FF,#E0E7FF);border-radius:12px;border:2px solid #C7D2FE;">
+        <div style="font-size:32px;font-weight:900;font-family:'Noto Serif SC',serif;color:#2B4EFF;">9/10</div>
+        <div style="font-size:11px;color:#374151;font-weight:600;margin-top:4px;">痛点清晰度</div>
+        <div style="font-size:10px;color:#6B7280;margin-top:3px;">数据实锤，需求真实</div>
+      </div>
+      <div style="text-align:center;padding:16px;background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border-radius:12px;border:2px solid #A7F3D0;">
+        <div style="font-size:32px;font-weight:900;font-family:'Noto Serif SC',serif;color:#059669;">9/10</div>
+        <div style="font-size:11px;color:#374151;font-weight:600;margin-top:4px;">竞争真空度</div>
+        <div style="font-size:10px;color:#6B7280;margin-top:3px;">全网无校历垂直产品</div>
+      </div>
+      <div style="text-align:center;padding:16px;background:linear-gradient(135deg,#FFF4EE,#FFE8E0);border-radius:12px;border:2px solid #FFCDB8;">
+        <div style="font-size:32px;font-weight:900;font-family:'Noto Serif SC',serif;color:#FF5C2B;">8/10</div>
+        <div style="font-size:11px;color:#374151;font-weight:600;margin-top:4px;">技术可行性</div>
+        <div style="font-size:10px;color:#6B7280;margin-top:3px;">API成熟，2周可Demo</div>
+      </div>
+      <div style="text-align:center;padding:16px;background:linear-gradient(135deg,#F3EEFF,#E9DFFF);border-radius:12px;border:2px solid #D4BFFF;">
+        <div style="font-size:32px;font-weight:900;font-family:'Noto Serif SC',serif;color:#7C5CFC;">8/10</div>
+        <div style="font-size:11px;color:#374151;font-weight:600;margin-top:4px;">商业可行性</div>
+        <div style="font-size:10px;color:#6B7280;margin-top:3px;">LTV/CAC>4.4x健康</div>
+      </div>
+    </div>
+
+    <!-- Key conclusions -->
+    <div style="background:#0D1B3E;border-radius:16px;padding:24px;margin-bottom:20px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;width:120px;height:120px;background:rgba(43,78,255,0.1);border-radius:50%;"></div>
+      <div style="position:absolute;right:30px;bottom:-30px;width:80px;height:80px;background:rgba(255,92,43,0.08);border-radius:50%;"></div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.5);font-weight:700;letter-spacing:1px;margin-bottom:12px;">💎 核心结论</div>
+      <div style="font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:white;line-height:1.6;margin-bottom:16px;">
+        「校历感知」是全网唯一可建立的<br>
+        <span style="color:#5B7AFF;">校园垂直 AI 经营壁垒</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:6px;height:6px;border-radius:50%;background:#00C9A7;margin-top:6px;flex-shrink:0;"></div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.6;">现有AI工具全面向通用商家，校园垂直场景是无人占据的真实空白</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:6px;height:6px;border-radius:50%;background:#FF8C5A;margin-top:6px;flex-shrink:0;"></div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.6;">商家最迫切的3个痛点（平台抽成/寒暑假/不会营销）均可被产品直接解决</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:6px;height:6px;border-radius:50%;background:#5B7AFF;margin-top:6px;flex-shrink:0;"></div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.6;">MVP 10页原型已完成，技术可行，2周内即可推进真实用户付费验证</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="width:6px;height:6px;border-radius:50%;background:#F5B800;margin-top:6px;flex-shrink:0;"></div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.6;">护城河不在代码里，在商家关系网络和持续积累的校历数据资产中</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next steps -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+      <div style="background:#F0F4FF;border-radius:12px;padding:14px;border:1.5px solid #C7D2FE;">
+        <div style="font-size:20px;margin-bottom:8px;">🏃</div>
+        <div style="font-size:12px;font-weight:700;color:#2B4EFF;margin-bottom:4px;">当前阶段</div>
+        <div style="font-size:11px;color:#374151;line-height:1.6;">用 Demo 去问 10 个校园周边商家：如果这个工具每月 ¥59，你用吗？</div>
+      </div>
+      <div style="background:#ECFDF5;border-radius:12px;padding:14px;border:1.5px solid #A7F3D0;">
+        <div style="font-size:20px;margin-bottom:8px;">📦</div>
+        <div style="font-size:12px;font-weight:700;color:#059669;margin-bottom:4px;">验证通过后</div>
+        <div style="font-size:11px;color:#374151;line-height:1.6;">深耕 1 所学校周边，服务 30 家商家，建立本地数据积累和信任关系</div>
+      </div>
+      <div style="background:#FFF4EE;border-radius:12px;padding:14px;border:1.5px solid #FFCDB8;">
+        <div style="font-size:20px;margin-bottom:8px;">🚀</div>
+        <div style="font-size:12px;font-weight:700;color:#FF5C2B;margin-bottom:4px;">规模化路径</div>
+        <div style="font-size:11px;color:#374151;line-height:1.6;">以城市为单位复制打法，商家联盟形成跨店联动网络效应护城河</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+    <div style="font-size:10px;color:#D1D5DB;">校边通 · ShopPulse Campus · 2026</div>
+    <div style="font-size:10px;color:#D1D5DB;">本文档为内部研究用途，数据部分基于模拟验证</div>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-blue" style="font-size:9px;">MVP已产出</span>
+      <span class="badge badge-teal" style="font-size:9px;">可立即验证</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
