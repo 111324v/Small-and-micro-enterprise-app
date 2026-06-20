@@ -31,15 +31,30 @@ body {
   display:flex; flex-direction:column; gap:5px;
 }
 
+/* ===== 字体规范 ===== */
+/* 一级标题：品牌名，仅用于"校边通" */
+.h1 { font-family:'Noto Serif SC',serif; font-size:21px; font-weight:900; color:#0B1A4E; letter-spacing:2px; }
+/* 二级标题：卡片标题、区块小标题 */
+.h2 { font-size:8px; font-weight:700; color:#0B1A4E; letter-spacing:1px; }
+/* 三级标题：功能名、竞品名、子区块标题 */
+.h3 { font-size:8px; font-weight:700; color:#1a1a1a; }
+/* 正文：主要内容描述 */
+.body { font-size:8px; font-weight:500; color:#444; line-height:1.5; }
+/* 辅助文字：描述、注释、次要信息 */
+.sub { font-size:7px; font-weight:400; color:#888; line-height:1.4; }
+/* 标签：徽章、分类标签 */
+.tag { font-size:7px; font-weight:700; letter-spacing:.5px; }
+/* 数据强调：关键数字、KPI */
+.num { font-size:8px; font-weight:700; color:#CC3A06; }
+
 /* HEAD */
 .head { display:flex; justify-content:space-between; align-items:center; padding-bottom:6px; border-bottom:1px solid #DCDCD6; flex-shrink:0; }
-.bn { font-family:'Noto Serif SC',serif; font-size:21px; font-weight:900; color:#0B1A4E; letter-spacing:2px; }
 .bd { width:6px;height:6px;border-radius:50%;background:#CC3A06;margin:0 7px 4px; display:inline-block; }
 .bs { font-size:10px;color:#ABABAB;font-weight:300;letter-spacing:1.5px; }
 
 /* SECTION LABEL */
 .slabel {
-  font-size:7.5px;font-weight:700;letter-spacing:2px;color:#0B1A4E;
+  font-size:8px;font-weight:700;letter-spacing:1.5px;color:#0B1A4E;
   border-bottom:1.5px solid #0B1A4E;padding-bottom:4px;margin-bottom:5px;
   display:flex;align-items:center;gap:5px; flex-shrink:0;
 }
@@ -52,42 +67,33 @@ body {
 .row-ab { display:grid; grid-template-columns:1.05fr 1fr; gap:7px; flex:1; min-height:0; }
 .row-cd { display:grid; grid-template-columns:1fr 1fr; gap:7px; flex:1; min-height:0; }
 
-/* PAIN ITEMS */
-.p-item { display:flex;gap:6px;align-items:flex-start;padding:3px 6px;border-left:2.5px solid;border-radius:0 3px 3px 0;background:#F9F9F6;margin-bottom:3px; flex-shrink:0; }
-.p-ico { font-size:11px;flex-shrink:0;line-height:1.3; }
-.p-t { font-size:9px;font-weight:700;color:#1a1a1a;line-height:1.3; }
-.p-d { font-size:7.5px;color:#888;line-height:1.3;margin-top:1px; }
-
 /* EVIDENCE */
 .ev-item { display:flex;gap:7px;align-items:flex-start;padding:4px 0;border-bottom:1px solid #EFEFEB;flex-shrink:0; }
 .ev-item:last-child { border-bottom:none; }
-.ev-src { color:white;font-size:7.5px;font-weight:700;padding:2px 7px;border-radius:2px;white-space:nowrap;flex-shrink:0;margin-top:1px;letter-spacing:.5px; }
-.ev-txt { font-size:9px;color:#444;line-height:1.5; }
+.ev-src { color:white;font-size:7px;font-weight:700;padding:2px 7px;border-radius:2px;white-space:nowrap;flex-shrink:0;margin-top:1px;letter-spacing:.5px; }
+.ev-txt { font-size:8px;color:#444;line-height:1.5; }
 .ev-txt strong { color:#CC3A06;font-weight:700; }
 
 /* MVP FLOW */
 .flow-steps { display:flex;align-items:center;gap:4px;margin-bottom:6px;flex-shrink:0; }
-.fs { flex:1;background:#F0F4FF;border-radius:3px;padding:4px 6px;font-size:9px;font-weight:600;color:#0B1A4E;text-align:center;line-height:1.3; }
+.fs { flex:1;background:#F0F4FF;border-radius:3px;padding:4px 6px;font-size:8px;font-weight:600;color:#0B1A4E;text-align:center;line-height:1.3; }
 .fa { color:#ABABAB;font-size:10px;flex-shrink:0; }
 .feat-item { display:flex;gap:6px;align-items:flex-start;padding:3px 0;border-bottom:1px solid #EFEFEB;flex-shrink:0; }
 .feat-item:last-child { border-bottom:none; }
 .fi { width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0; }
-.fn { font-size:9.5px;font-weight:700;color:#1a1a1a;line-height:1.3; }
-.fd { font-size:8px;color:#888;line-height:1.3;margin-top:1px; }
-.fbadge { display:inline-block;font-size:7px;font-weight:700;padding:1px 4px;border-radius:2px;margin-left:3px;vertical-align:middle; }
 
 /* PRICING */
 .price-row { display:flex;gap:5px;margin-bottom:6px;flex-shrink:0; }
 .pc { flex:1;border-radius:3px;padding:6px 8px;text-align:center;border:1px solid #E2E2DC;background:white; }
 .pc.hl { background:#A6C5F5;border-color:#A6C5F5; }
-.pc-tier { font-size:7.5px;color:#ABABAB;margin-bottom:2px; }
+.pc-tier { font-size:7px;color:#ABABAB;margin-bottom:2px; }
 .pc.hl .pc-tier { color:#0B1A4E; }
 .pc-val { font-family:'Noto Serif SC',serif;font-size:16px;font-weight:900;color:#0B1A4E;line-height:1; }
-.pc-sub { font-size:7.5px;color:#888;margin-top:2px; }
+.pc-sub { font-size:7px;color:#888;margin-top:2px; }
 .pc.hl .pc-sub { color:#444; }
-.ch-item { display:flex;align-items:center;gap:6px;font-size:9px;color:#333;padding:2px 0;flex-shrink:0; }
+.ch-item { display:flex;align-items:center;gap:6px;font-size:8px;color:#333;padding:2px 0;flex-shrink:0; }
 .ch-dot { width:4px;height:4px;border-radius:50%;flex-shrink:0; }
-.chip { display:inline-block;font-size:7.5px;font-weight:700;padding:1px 5px;border-radius:2px; }
+.chip { display:inline-block;font-size:7px;font-weight:700;padding:1px 5px;border-radius:2px; }
 .cb { background:#EEF2FF;color:#1B3DBF; }
 .cr { background:#FEF2EE;color:#CC3A06; }
 .cg { background:#ECFDF5;color:#059669; }
@@ -97,7 +103,6 @@ body {
   display:grid; grid-template-columns:repeat(4,1fr);
   position:relative; padding-top:10px;
 }
-/* 连接线横贯中间 */
 .htl-row::before {
   content:'';
   position:absolute; top:9px; left:calc(12.5%); right:calc(12.5%);
@@ -111,18 +116,16 @@ body {
   background:#0B1A4E;display:flex;align-items:center;justify-content:center;
   font-size:8px;font-weight:700;color:white;position:relative;z-index:1;
 }
-.htl-day { font-size:7.5px;font-weight:700;color:#0B1A4E;margin-bottom:3px; }
-.htl-ti { font-size:9px;font-weight:600;color:#1a1a1a;line-height:1.4; }
-.htl-kpi { font-size:7.5px;color:#CC3A06;font-weight:600;margin-top:3px; }
+.htl-day { font-size:7px;font-weight:700;color:#0B1A4E;margin-bottom:2px; }
+.htl-ti { font-size:8px;font-weight:500;color:#1a1a1a;line-height:1.4; }
+.htl-kpi { font-size:7px;color:#CC3A06;font-weight:600;margin-top:2px; }
 
 /* FOOTER */
 .foot { padding-top:5px;border-top:1px solid #DCDCD6;display:flex;justify-content:space-between;align-items:center;flex-shrink:0; }
 .fk { text-align:center; }
 .fk-n { font-family:'Noto Serif SC',serif;font-size:12px;font-weight:900;color:#0B1A4E;line-height:1; }
 .fk-l { font-size:7px;color:#ABABAB;margin-top:1px; }
-.wall { background:#A6C5F5;border-radius:3px;padding:3px 10px; }
-.wall span { font-size:7.5px;font-weight:700;color:#0B1A4E;letter-spacing:.8px; }
-.foot-r { font-size:7.5px;color:#CACAC4;text-align:right;line-height:1.8; }
+.foot-r { font-size:7px;color:#CACAC4;text-align:right;line-height:1.8; }
 </style>
 </head>
 <body>
@@ -132,7 +135,7 @@ body {
   <!-- HEAD：品牌名 + 两个高亮按钮（含URL） -->
   <div class="head">
     <div style="display:flex;align-items:baseline;">
-      <span class="bn">校边通</span>
+      <span class="h1">校边通</span>
       <span class="bd"></span>
       <span class="bs">AI校园商家助手</span>
     </div>
@@ -162,43 +165,43 @@ body {
     <!-- ① 机会判断 -->
     <div class="panel">
       <div class="slabel"><div class="sn">1</div>机会判断 · 目标用户 / 痛点 / 时机</div>
-      <div style="font-size:7.5px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:4px;flex-shrink:0;">
+      <div class="sub" style="letter-spacing:1px;margin-bottom:4px;flex-shrink:0;">
         目标：校园周边500m小微餐饮/便利店 · 日营收¥500-3000 · 员工1-3人
       </div>
       <!-- 痛点横向网格：3+2布局 -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:5px;flex-shrink:0;">
         <div style="background:#FEF2EE;border-radius:3px;padding:4px 5px;border-top:2px solid #CC3A06;">
           <div style="font-size:10px;margin-bottom:2px;">💸</div>
-          <div style="font-size:8px;font-weight:700;color:#1a1a1a;line-height:1.3;">平台抽成18-23%</div>
-          <div style="font-size:7px;color:#888;line-height:1.3;margin-top:1px;">做外卖不赚钱，但不做没流量</div>
+          <div class="h3" style="line-height:1.3;">平台抽成18-23%</div>
+          <div class="sub" style="margin-top:1px;">做外卖不赚钱，但不做没流量</div>
         </div>
         <div style="background:#EEF2FF;border-radius:3px;padding:4px 5px;border-top:2px solid #1B3DBF;">
           <div style="font-size:10px;margin-bottom:2px;">📢</div>
-          <div style="font-size:8px;font-weight:700;color:#1a1a1a;line-height:1.3;">不会营销</div>
-          <div style="font-size:7px;color:#888;line-height:1.3;margin-top:1px;">错过校历节点，高峰流量溜走</div>
+          <div class="h3" style="line-height:1.3;">不会营销</div>
+          <div class="sub" style="margin-top:1px;">错过校历节点，高峰流量溜走</div>
         </div>
         <div style="background:#FEFCE8;border-radius:3px;padding:4px 5px;border-top:2px solid #F0A500;">
           <div style="font-size:10px;margin-bottom:2px;">❄️</div>
-          <div style="font-size:8px;font-weight:700;color:#1a1a1a;line-height:1.3;">寒暑假收入近零</div>
-          <div style="font-size:7px;color:#888;line-height:1.3;margin-top:1px;">3-4个月无预案，年年亏损</div>
+          <div class="h3" style="line-height:1.3;">寒暑假收入近零</div>
+          <div class="sub" style="margin-top:1px;">3-4个月无预案，年年亏损</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:4px;margin-bottom:5px;flex-shrink:0;">
         <div style="background:#ECFDF5;border-radius:3px;padding:4px 5px;border-top:2px solid #10B981;">
           <div style="font-size:10px;margin-bottom:2px;">📦</div>
-          <div style="font-size:8px;font-weight:700;color:#1a1a1a;line-height:1.3;">备货靠经验瞎猜</div>
-          <div style="font-size:7px;color:#888;line-height:1.3;margin-top:1px;">天气×考试×节假日无法量化</div>
+          <div class="h3" style="line-height:1.3;">备货靠经验瞎猜</div>
+          <div class="sub" style="margin-top:1px;">天气×考试×节假日无法量化</div>
         </div>
         <div style="background:#F3EEFF;border-radius:3px;padding:4px 5px;border-top:2px solid #8B5CF6;">
           <div style="font-size:10px;margin-bottom:2px;">⭐</div>
-          <div style="font-size:8px;font-weight:700;color:#1a1a1a;line-height:1.3;">差评不会回</div>
-          <div style="font-size:7px;color:#888;line-height:1.3;margin-top:1px;">评分持续下滑，影响排名</div>
+          <div class="h3" style="line-height:1.3;">差评不会回</div>
+          <div class="sub" style="margin-top:1px;">评分持续下滑，影响排名</div>
         </div>
       </div>
       <!-- 为什么现在值得做 -->
       <div style="background:linear-gradient(135deg,#ECFDF5 0%,#F0FDF4 100%);border-radius:3px;padding:5px 8px;margin-bottom:5px;flex-shrink:0;border-left:3px solid #059669;">
-        <div style="font-size:7.5px;font-weight:700;color:#059669;letter-spacing:1px;margin-bottom:3px;">💡 为什么现在值得做？</div>
-        <div style="font-size:7.5px;color:#444;line-height:1.5;">
+        <div class="h2" style="color:#059669;margin-bottom:3px;">💡 为什么现在值得做？</div>
+        <div class="body">
           <span style="font-weight:700;color:#0B1A4E;">① 需求爆发</span> — 小红书/抖音「校园周边开店」话题播放量超千万，创业者涌入但成功率低；
           <span style="font-weight:700;color:#0B1A4E;">② 竞品空白</span> — 大厂做通用工具，无人针对校园场景做垂直产品；
           <span style="font-weight:700;color:#0B1A4E;">③ AI成熟</span> — 大模型能力足以生成营销文案和备货建议，技术门槛大幅降低；
@@ -207,29 +210,29 @@ body {
       </div>
       <!-- 竞品分析，flex:1 撑满剩余空间 -->
       <div style="flex:1;background:#F9F9F6;border-radius:3px;padding:7px 8px;display:flex;flex-direction:column;gap:4px;">
-        <div style="font-size:7px;font-weight:700;letter-spacing:1.5px;color:#0B1A4E;margin-bottom:1px;">现有竞品对比 · 校边通的差异化窗口</div>
+        <div class="h2" style="margin-bottom:1px;">现有竞品对比 · 校边通的差异化窗口</div>
         <!-- 竞品1：美团经营宝 -->
         <div style="background:white;border-radius:3px;padding:3px 6px;border-left:3px solid #F0A500;display:flex;align-items:center;gap:5px;">
           <span style="font-size:10px;flex-shrink:0;">🟡</span>
-          <div style="font-size:7.5px;color:#888;line-height:1.4;"><span style="font-weight:700;color:#1a1a1a;">美团经营宝</span> — 通用工具，<span style="color:#CC3A06;font-weight:600;">无校历感知，抽成利益冲突</span></div>
+          <div class="sub"><span class="h3">美团经营宝</span> — 通用工具，<span style="color:#CC3A06;font-weight:600;">无校历感知，抽成利益冲突</span></div>
         </div>
         <!-- 竞品2：客如云 -->
         <div style="background:white;border-radius:3px;padding:3px 6px;border-left:3px solid #3B82F6;display:flex;align-items:center;gap:5px;">
           <span style="font-size:10px;flex-shrink:0;">🔵</span>
-          <div style="font-size:7.5px;color:#888;line-height:1.4;"><span style="font-weight:700;color:#1a1a1a;">客如云</span> — 收银+会员，面向连锁；<span style="color:#CC3A06;font-weight:600;">月费¥500+，小微难承受</span></div>
+          <div class="sub"><span class="h3">客如云</span> — 收银+会员，面向连锁；<span style="color:#CC3A06;font-weight:600;">月费¥500+，小微难承受</span></div>
         </div>
         <!-- 竞品3：抖音来客 -->
         <div style="background:white;border-radius:3px;padding:3px 6px;border-left:3px solid #333;display:flex;align-items:center;gap:5px;">
           <span style="font-size:10px;flex-shrink:0;">⚫</span>
-          <div style="font-size:7.5px;color:#888;line-height:1.4;"><span style="font-weight:700;color:#1a1a1a;">抖音来客</span> — 内容营销+团购；<span style="color:#CC3A06;font-weight:600;">学习成本高，备货预测缺失</span></div>
+          <div class="sub"><span class="h3">抖音来客</span> — 内容营销+团购；<span style="color:#CC3A06;font-weight:600;">学习成本高，备货预测缺失</span></div>
         </div>
         <!-- 竞品4：商家现状 -->
         <div style="background:white;border-radius:3px;padding:3px 6px;border-left:3px solid #9CA3AF;display:flex;align-items:center;gap:5px;">
           <span style="font-size:10px;flex-shrink:0;">📱</span>
-          <div style="font-size:7.5px;color:#888;line-height:1.4;"><span style="font-weight:700;color:#1a1a1a;">商家现状</span> — 微信群+传单；<span style="color:#059669;font-weight:600;">校边通直接替代，迁移成本极低</span></div>
+          <div class="sub"><span class="h3">商家现状</span> — 微信群+传单；<span style="color:#059669;font-weight:600;">校边通直接替代，迁移成本极低</span></div>
         </div>
         <!-- 结论行 -->
-        <div style="background:#EEF2FF;border-radius:3px;padding:4px 8px;font-size:7.5px;color:#1B3DBF;font-weight:600;line-height:1.5;flex-shrink:0;">
+        <div style="background:#EEF2FF;border-radius:3px;padding:4px 8px;color:#1B3DBF;font-weight:600;line-height:1.5;flex-shrink:0;" class="body">
           🎯 所有竞品均无「校历感知」——这是唯一不可被复制的垂直壁垒
         </div>
       </div>
@@ -252,7 +255,7 @@ body {
       </div>
       <!-- 社群截图证据 -->
       <div style="margin-top:5px;background:#F9F9F6;border-radius:3px;padding:4px;flex:1;display:flex;flex-direction:column;min-height:0;">
-        <div style="font-size:7px;font-weight:700;letter-spacing:1.5px;color:#0B1A4E;margin-bottom:3px;">社群/平台真实反馈截图</div>
+        <div class="h2" style="margin-bottom:3px;">社群/平台真实反馈截图</div>
         <div style="flex:1;border-radius:3px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#E5E7EB;">
           <img src="1.png" style="width:100%;height:100%;object-fit:cover;" />
         </div>
@@ -267,7 +270,7 @@ body {
     <div class="panel">
       <div class="slabel"><div class="sn">3</div>MVP 样例 · 核心功能 + Kano优先级</div>
       <div style="background:linear-gradient(135deg,#EEF2FF 0%,#F0F4FF 100%);border-radius:3px;padding:5px 8px;margin-bottom:5px;flex-shrink:0;">
-        <div style="font-size:8px;color:#0B1A4E;line-height:1.5;font-weight:500;"><span style="font-weight:700;color:#1B3DBF;">校边通</span> 是一款面向校园周边小微商家的 AI 经营助手。核心亮点：<span style="font-weight:700;color:#CC3A06;">① 全网唯一「校历感知引擎」</span>——自动同步学校校历，考试周/运动会/寒暑假等节点驱动营销与备货；<span style="font-weight:700;color:#1B3DBF;">② AI 一键生成</span>——营销文案+海报+备货建议，商家复制即用；<span style="font-weight:700;color:#059669;">③ 双因子预测</span>——天气×校历量化备货，告别经验瞎猜。</div>
+        <div class="body"><span style="font-weight:700;color:#1B3DBF;">校边通</span> 是一款面向校园周边小微商家的 AI 经营助手。核心亮点：<span style="font-weight:700;color:#CC3A06;">① 全网唯一「校历感知引擎」</span>——自动同步学校校历，考试周/运动会/寒暑假等节点驱动营销与备货；<span style="font-weight:700;color:#1B3DBF;">② AI 一键生成</span>——营销文案+海报+备货建议，商家复制即用；<span style="font-weight:700;color:#059669;">③ 双因子预测</span>——天气×校历量化备货，告别经验瞎猜。</div>
       </div>
       <div class="flow-steps">
         <div class="fs">输入<br>校历节点</div><div class="fa">›</div>
@@ -277,27 +280,27 @@ body {
       </div>
       <div class="feat-item">
         <div class="fi" style="background:#EEF2FF;">📅</div>
-        <div><div class="fn">校历感知引擎</div><div class="fd">自动同步校历，节点驱动营销推荐</div></div>
+        <div><div class="h3">校历感知引擎</div><div class="sub">自动同步校历，节点驱动营销推荐</div></div>
       </div>
       <div class="feat-item">
         <div class="fi" style="background:#FEF2EE;">📣</div>
-        <div><div class="fn">AI营销中心</div><div class="fd">海报+文案一键生成，含最佳发布时间</div></div>
+        <div><div class="h3">AI营销中心</div><div class="sub">海报+文案一键生成，含最佳发布时间</div></div>
       </div>
       <div class="feat-item">
         <div class="fi" style="background:#ECFDF5;">📦</div>
-        <div><div class="fn">智能备货预测</div><div class="fd">天气×校历双因子，输出明日SKU补货量</div></div>
+        <div><div class="h3">智能备货预测</div><div class="sub">天气×校历双因子，输出明日SKU补货量</div></div>
       </div>
       <div class="feat-item">
         <div class="fi" style="background:#F3EEFF;">⭐</div>
-        <div><div class="fn">差评分析</div><div class="fd">AI识别差评根因，生成高情商回复模板</div></div>
+        <div><div class="h3">差评分析</div><div class="sub">AI识别差评根因，生成高情商回复模板</div></div>
       </div>
       <div class="feat-item">
         <div class="fi" style="background:#FEFCE8;">🤝</div>
-        <div><div class="fn">跨店联动（专业版）</div><div class="fd">AI匹配互补套餐，自动分账结算</div></div>
+        <div><div class="h3">跨店联动（专业版）</div><div class="sub">AI匹配互补套餐，自动分账结算</div></div>
       </div>
       <!-- Kano图 -->
       <div style="margin-top:5px;display:flex;flex-direction:column;">
-        <div style="font-size:7px;font-weight:700;letter-spacing:1.5px;color:#0B1A4E;margin-bottom:3px;flex-shrink:0;">Kano 模型 · 功能优先级</div>
+        <div class="h2" style="margin-bottom:3px;flex-shrink:0;">Kano 模型 · 功能优先级</div>
         <svg viewBox="0 0 310 105" style="width:100%;max-height:110px;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <rect x="10" y="5" width="290" height="80" fill="#FAFAFA" rx="3"/>
           <line x1="10" y1="85" x2="300" y2="85" stroke="#D1D5DB" stroke-width="1"/>
@@ -352,44 +355,44 @@ body {
         </div>
         <div class="pc hl">
           <div class="pc-tier">标准版 ✦ 主力</div>
-          <div class="pc-val">¥59<span style="font-size:8px;font-weight:300;color:#444;">/月</span></div>
+          <div class="pc-val">¥59<span style="font-size:7px;font-weight:300;color:#444;">/月</span></div>
           <div class="pc-sub">AI营销+备货预测</div>
         </div>
         <div class="pc">
           <div class="pc-tier">专业版</div>
-          <div class="pc-val">¥199<span style="font-size:8px;font-weight:300;color:#ABABAB;">/月</span></div>
+          <div class="pc-val">¥199<span style="font-size:7px;font-weight:300;color:#ABABAB;">/月</span></div>
           <div class="pc-sub">跨店联动全功能</div>
         </div>
       </div>
-      <div style="font-size:7.5px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:3px;flex-shrink:0;">为什么付费？</div>
+      <div class="h2" style="margin-bottom:3px;flex-shrink:0;">为什么付费？</div>
       <div style="margin-bottom:6px;display:flex;flex-direction:column;gap:3px;flex-shrink:0;">
         <div style="display:flex;gap:6px;align-items:flex-start;padding:4px 8px;background:#F0F4FF;border-radius:3px;">
           <span style="color:#1B3DBF;font-size:11px;flex-shrink:0;line-height:1.3;">💰</span>
-          <div style="font-size:8px;color:#444;line-height:1.5;"><span style="font-weight:700;color:#0B1A4E;">替代兼职运营成本</span> — 市场价¥800-1500/月，¥59/月仅需 1/13，效果更稳定</div>
+          <div class="body"><span style="font-weight:700;color:#0B1A4E;">替代兼职运营成本</span> — 市场价¥800-1500/月，¥59/月仅需 1/13，效果更稳定</div>
         </div>
         <div style="display:flex;gap:6px;align-items:flex-start;padding:4px 8px;background:#F0F4FF;border-radius:3px;">
           <span style="color:#CC3A06;font-size:11px;flex-shrink:0;line-height:1.3;">📦</span>
-          <div style="font-size:8px;color:#444;line-height:1.5;"><span style="font-weight:700;color:#0B1A4E;">考试周备货精准</span> — 一次断货损失¥300-800，校历提醒一次即回本整年</div>
+          <div class="body"><span style="font-weight:700;color:#0B1A4E;">考试周备货精准</span> — 一次断货损失¥300-800，校历提醒一次即回本整年</div>
         </div>
         <div style="display:flex;gap:6px;align-items:flex-start;padding:4px 8px;background:#F0F4FF;border-radius:3px;">
           <span style="color:#059669;font-size:11px;flex-shrink:0;line-height:1.3;">⭐</span>
-          <div style="font-size:8px;color:#444;line-height:1.5;"><span style="font-weight:700;color:#0B1A4E;">差评减少=排名回升</span> — 平台评分+0.3分约带来15%订单增量，远超工具费</div>
+          <div class="body"><span style="font-weight:700;color:#0B1A4E;">差评减少=排名回升</span> — 平台评分+0.3分约带来15%订单增量，远超工具费</div>
         </div>
       </div>
-      <div style="font-size:7.5px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:4px;flex-shrink:0;">获客路径</div>
+      <div class="h2" style="margin-bottom:4px;flex-shrink:0;">获客路径</div>
       <div class="ch-item"><div class="ch-dot" style="background:#0B1A4E;"></div>校园周边地推扫街（500m）<span class="chip cb">主渠道</span></div>
       <div class="ch-item"><div class="ch-dot" style="background:#CC3A06;"></div>店主群口碑裂变，邀请返现¥20<span class="chip cr">低成本</span></div>
       <div class="ch-item"><div class="ch-dot" style="background:#059669;"></div>平台服务商BD合作<span class="chip cg">规模化</span></div>
       <!-- 护城河 -->
       <div style="margin-top:auto;padding-top:5px;flex-shrink:0;">
         <div style="background:#A6C5F5;border-radius:3px;padding:7px 10px;">
-          <div style="font-size:7.5px;font-weight:700;color:#0B1A4E;margin-bottom:3px;">🔒 护城河：校历数据 + 商家关系网络</div>
-          <div style="font-size:8px;color:#0B1A4E;line-height:1.6;">大厂不屑做垂直场景 → 同行难以快速复制 → 越用数据越准 → 越难离开</div>
+          <div class="h3" style="color:#0B1A4E;margin-bottom:3px;">🔒 护城河：校历数据 + 商家关系网络</div>
+          <div class="body" style="color:#0B1A4E;">大厂不屑做垂直场景 → 同行难以快速复制 → 越用数据越准 → 越难离开</div>
         </div>
       </div>
       <!-- 利益相关者关系图，flex:1撑满 -->
       <div style="margin-top:5px;background:#F9F9F6;border-radius:3px;padding:5px;flex:1;display:flex;flex-direction:column;">
-        <div style="font-size:7px;font-weight:700;letter-spacing:1.5px;color:#0B1A4E;margin-bottom:3px;">利益相关者关系图</div>
+        <div class="h2" style="margin-bottom:3px;">利益相关者关系图</div>
         <svg viewBox="0 0 310 120" style="width:100%;flex:1;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="b1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5z" fill="#1B3DBF"/></marker>
@@ -474,8 +477,8 @@ body {
         <div class="htl-kpi" style="color:#059669;">≥6/10人接受¥59/月 → 进入开发</div>
       </div>
     </div>
-    <div style="margin-top:6px;background:#FEF2EE;border-radius:3px;padding:4px 10px;font-size:8px;color:#444;line-height:1.6;">
-      <span style="color:#CC3A06;font-weight:700;">三大验证假设：</span>①校历感知具有付费价值 &nbsp;②AI生成内容商家可直接使用 &nbsp;③CAC &lt; ¥80
+    <div style="margin-top:6px;background:#FEF2EE;border-radius:3px;padding:4px 10px;" class="body">
+      <span class="num">三大验证假设：</span>①校历感知具有付费价值 &nbsp;②AI生成内容商家可直接使用 &nbsp;③CAC &lt; ¥80
     </div>
   </div>
 
